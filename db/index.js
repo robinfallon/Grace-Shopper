@@ -1,5 +1,4 @@
 const { Client } = require("pg");
-const { getAllLinks } = require("../../linkenator/db");
 
 const client = new Client("postgres://localhost:5432/capstone");
 
@@ -41,14 +40,14 @@ async function createProduct({
   }
 }
 
-async function createReview({ userId, review }) {
+async function createReview({ productId, userId, review }) {
   try {
     const result = await client.query(
       `
-    INSERT INTO reviews("userId", review )
-    VALUES ($1, $2);
+    INSERT INTO reviews("productId", "userId", review )
+    VALUES ($1, $2, $3);
     `,
-      [userId, review]
+      [productId, userId, review]
     );
     console.log(result);
     return result;
@@ -75,8 +74,8 @@ async function getAllProducts() {
     rows.map(async (product) => {
       const { rows: reviewIds } = await client.query(
         `
-      SELECT "reviewId"
-      FROM productreviews
+      SELECT *
+      FROM reviews
       WHERE "productId"=$1
       `,
         [product.id]
@@ -115,6 +114,31 @@ async function getAllUsers() {
   );
 
   return rows;
+}
+
+async function getAllTaxes(){
+  const {rows} = await client.query(
+    `
+    SELECT state, rate
+    FROM taxrates;
+    `
+  );
+  return rows;
+}
+
+async function createTaxRate({ state, rate}){
+  try {
+    const result = await client.query(
+      `
+    INSERT INTO taxrates(state, rate)
+    VALUES ($1, $2);
+    `,
+      [state, rate]
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function getUsersByID(id) {
@@ -169,4 +193,6 @@ module.exports = {
   getProductsById,
   getUsersByID,
   getReviewsByID,
+  getAllTaxes,
+  createTaxRate,
 };
