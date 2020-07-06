@@ -1,0 +1,4 @@
+.gridthis {
+  display: grid;
+  grid-template-columns: 580px 1fr;
+}

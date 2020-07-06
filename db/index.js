@@ -116,8 +116,13 @@ async function getAllUsers() {
   return rows;
 }
 
+<<<<<<< HEAD
 async function getAllTaxes(){
   const {rows} = await client.query(
+=======
+async function getAllTaxes() {
+  const { rows } = await client.query(
+>>>>>>> master
     `
     SELECT state, rate
     FROM taxrates;
@@ -126,7 +131,11 @@ async function getAllTaxes(){
   return rows;
 }
 
+<<<<<<< HEAD
 async function createTaxRate({ state, rate}){
+=======
+async function createTaxRate({ state, rate }) {
+>>>>>>> master
   try {
     const result = await client.query(
       `
