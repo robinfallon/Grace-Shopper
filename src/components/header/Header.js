@@ -5,8 +5,20 @@ function Header() {
   return (
     <div className="header">
       <div className="rose">Grace Shopper</div>
-
-      <h2 className="slogan">Only a limited-time sale on everything!</h2>
+      <form method="get" action="">
+        <div className="tb">
+          <div className="td">
+            <input type="text" placeholder="Search Gracefully" required />
+          </div>
+          <div className="td" id="s-cover">
+            <button type="submit" className="submit">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <button className="account">Log in or Sign up!</button>
     </div>
   );
 }

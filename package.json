@@ -8,12 +8,14 @@
     "client:dev": "react-scripts start",
     "client:build": "react-scripts build",
     "server:dev": "nodemon index.js",
-    "db:build": "node ./db/init_db"
+    "db:build": "node ./db/init_db",
+    "seed:dev": "nodemon ./db/init_db.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
@@ -26,7 +28,7 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "browserslist": {
     "production": [
       ">0.2%",
