@@ -18,16 +18,6 @@ prodRouter.get("/", async (req, res, next) => {
     next({ name, message });
   }
 });
-prodRouter.get("/allReviews", async (req, res, next) => {
-  try {
-    const allReviews = await getAllReviews();
-    res.send({
-      allReviews,
-    });
-  } catch ({ name, message }) {
-    next({ name, message });
-  }
-});
 
 prodRouter.get("/review/:productId", async (req, res, next) => {
   try {
