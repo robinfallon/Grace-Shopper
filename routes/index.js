@@ -15,4 +15,7 @@ apiRouter.use("/users", usersRouter);
 const taxRouter = require("./tax");
 apiRouter.use("/tax", taxRouter);
 
+const reviewRouter = require("./reviews");
+apiRouter.use("/reviews", reviewRouter);
+
 module.exports = apiRouter;

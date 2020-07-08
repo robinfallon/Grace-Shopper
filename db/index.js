@@ -182,6 +182,22 @@ async function getReviewsByID(id) {
   }
 }
 
+async function getReviewsByUserID(id) {
+  try {
+    const { rows } = await client.query(
+      `
+    SELECT *
+    FROM reviews
+    WHERE "userId"=$1
+    `,
+      [id]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getReviewsByProductID(id) {
   try {
     const { rows } = await client.query(
@@ -212,4 +228,5 @@ module.exports = {
   getAllTaxes,
   createTaxRate,
   getReviewsByProductID,
+  getReviewsByUserID,
 };
