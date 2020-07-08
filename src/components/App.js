@@ -6,6 +6,7 @@ import WelcomeBar from "./header/WelcomeBar";
 import DealOfTheDay from "./DealOfTheDay";
 import "./App.css";
 import ProductSection from "./ProductSection";
+import Tabs from "../components/header/Tabs";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -23,10 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <div className="gridthis">
-        <WelcomeBar className="griditemone" />
-        <DealOfTheDay className="griditemtwo" />
-      </div>
+      <Tabs />
       <ProductSection />
     </div>
   );

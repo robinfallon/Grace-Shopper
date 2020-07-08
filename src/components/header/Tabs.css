@@ -1,0 +1,8 @@
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.button {
+  background-color: black;
+}
