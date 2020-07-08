@@ -12,7 +12,7 @@
     rgb(255, 233, 136)
   );
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .header:hover {
@@ -75,6 +75,12 @@ button {
 .submit {
   background-color: white;
   margin-right: 400px;
+  position: relative;
+
+  display: block;
+  width: 50px;
+  height: 150px;
+  cursor: pointer;
 }
 
 #cover {
@@ -115,15 +121,6 @@ input[type="text"]::placeholder {
   padding-left: 35px;
 }
 
-button {
-  position: relative;
-
-  display: block;
-  width: 50px;
-  height: 150px;
-  cursor: pointer;
-}
-
 #s-circle {
   position: relative;
   top: 0px;
@@ -137,7 +134,7 @@ button {
   transition: 0.5s ease all;
 }
 
-button span {
+.submit span {
   position: absolute;
   top: 68px;
   left: 43px;
@@ -150,8 +147,8 @@ button span {
   transition: 0.5s ease all;
 }
 
-button span:before,
-button span:after {
+.submit span:before,
+.submit span:after {
   content: "";
   position: absolute;
   bottom: -192px;
