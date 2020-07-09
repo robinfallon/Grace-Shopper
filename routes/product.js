@@ -1,8 +1,9 @@
 const apiRouter = require("express");
 
 const prodRouter = apiRouter.Router();
-const { getAllProducts } = require("../db");
+
 const {
+  getAllProducts,
   getAllReviews,
   getReviewsByID,
   getReviewsByProductID,
@@ -14,16 +15,6 @@ prodRouter.get("/", async (req, res, next) => {
     res.send({
       allProducts,
     });
-  } catch ({ name, message }) {
-    next({ name, message });
-  }
-});
-
-prodRouter.get("/review/:productId", async (req, res, next) => {
-  try {
-    const { productId } = req.params;
-    const review = await getReviewsByProductID(productId);
-    res.send({ review });
   } catch ({ name, message }) {
     next({ name, message });
   }
