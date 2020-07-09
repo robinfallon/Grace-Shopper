@@ -18,6 +18,38 @@ async function createUser({ username, password, seller, shoppingcart }) {
   }
 }
 
+async function getUserByUsername(userName) {
+  // first get the user
+  try {
+    const {rows} = await client.query(`
+      SELECT *
+      FROM users
+      WHERE username = $1;
+    `, [userName]);
+    if (!rows || !rows.length) return null;
+    const [user] = rows;
+    return user;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function getUser({username, password}) {
+  if (!username || !password) {
+    return;
+  }
+
+  try {
+    const user = await getUserByUsername(username);
+    if(!user) return;
+    const matchingPassword = bcrypt.compareSync(password, user.password);
+    if(!matchingPassword) return;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 async function createProduct({
   itemname,
   description,
@@ -116,13 +148,8 @@ async function getAllUsers() {
   return rows;
 }
 
-<<<<<<< HEAD
-async function getAllTaxes(){
-  const {rows} = await client.query(
-=======
 async function getAllTaxes() {
   const { rows } = await client.query(
->>>>>>> master
     `
     SELECT state, rate
     FROM taxrates;
@@ -131,11 +158,7 @@ async function getAllTaxes() {
   return rows;
 }
 
-<<<<<<< HEAD
-async function createTaxRate({ state, rate}){
-=======
 async function createTaxRate({ state, rate }) {
->>>>>>> master
   try {
     const result = await client.query(
       `
@@ -191,6 +214,29 @@ async function getReviewsByID(id) {
   }
 }
 
+async function updateReview({productId, userId, reviews}){
+  const {rows} = fields
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  try {
+    if (setString.length > 0) {
+      await client.query(
+        `
+        UPDATE reviews
+        SET ${setString}
+        WHERE id=${productId}
+        RETURNING *;
+      `,
+        Object.values(fields)
+      );
+    }
+} catch(error){
+  throw error;
+}
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -204,4 +250,6 @@ module.exports = {
   getReviewsByID,
   getAllTaxes,
   createTaxRate,
+  getUserByUsername,
+  getUser,
 };
