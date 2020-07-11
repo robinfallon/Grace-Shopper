@@ -11,9 +11,10 @@
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
-  margin: 3em auto;
-  height: 350px;
-  width: 900px;
+  margin: 2em auto;
+  height: 260px;
+  width: 600px;
+  border: 1px solid black;
 }
 
 /* 	Product details  */

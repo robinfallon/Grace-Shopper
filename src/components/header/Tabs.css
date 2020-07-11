@@ -86,6 +86,7 @@ button.big-button:active::before {
 
 .tabs {
   padding-top: 40px;
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-left: 10px;
