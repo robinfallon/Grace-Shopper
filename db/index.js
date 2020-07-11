@@ -106,7 +106,7 @@ async function getAllProducts() {
     rows.map(async (product) => {
       const { rows: reviewIds } = await client.query(
         `
-      SELECT *
+      SELECT id
       FROM reviews
       WHERE "productId"=$1
       `,
