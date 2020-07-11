@@ -19,7 +19,7 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/login", async (req, res, next) => {
+usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
     next({
@@ -48,7 +48,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/register", async (req, res, next) => {
+usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const queriedUser = await getUserByUsername(username);

@@ -236,6 +236,55 @@ async function updateReview(productId, fields = {}) {
   }
 }
 
+async function getUser({ username, password }) {
+  if (!username || !password) {
+    return;
+  }
+  try {
+    const user = await getUserByUsername(username);
+    if (!user) return;
+    const matchingPassword = bcrypt.compareSync(password, user.password);
+    if (!matchingPassword) return;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUserByUsername(userName) {
+  try {
+    const { rows } = await client.query(
+      `
+      SELECT *
+      FROM users
+      WHERE username = $1;
+    `,
+      [userName]
+    );
+    if (!rows || !rows.length) return null;
+    const [user] = rows;
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function destroyReview(id) {
+  try {
+    console.log(id, "id");
+    const { rows } = await client.query(
+      `
+      DELETE FROM reviews
+      WHERE id=${id}
+      RETURNING *;
+      `
+    );
+    console.log(rows);
+  } catch ({ name, message }) {
+    console.log({ name, message });
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
@@ -252,4 +301,7 @@ module.exports = {
   getReviewsByProductID,
   getReviewsByUserID,
   updateReview,
+  getUser,
+  getUserByUsername,
+  destroyReview,
 };

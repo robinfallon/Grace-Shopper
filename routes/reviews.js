@@ -6,6 +6,7 @@ const {
   getReviewsByProductID,
   getReviewsByUserID,
   updateReview,
+  destroyReview,
 } = require("../db");
 
 reviewRouter.get("/", async (req, res, next) => {
@@ -34,6 +35,30 @@ reviewRouter.get("/userReviews/:userId", async (req, res, next) => {
     res.send({ reviews });
   } catch ({ name, message }) {
     next({ name, message });
+  }
+});
+
+reviewRouter.patch("/:reviewId", async (req, res, next) => {
+  try {
+    const { productId, userId, review } = req.body;
+    const updatedReview = await updateReview({
+      id: req.params.productId,
+      review,
+    });
+
+    res.send(updatedReview);
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+reviewRouter.delete("/:reviewId", async (req, res, next) => {
+  console.log("starting delete review");
+  try {
+    const deletedReview = await destroyReview(req.params.reviewId);
+    res.send(deletedReview);
+  } catch (error) {
+    console.log(error);
   }
 });
 

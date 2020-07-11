@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getSomething } from "../api";
 import Header from "./header/Header";
-import WelcomeBar from "./header/WelcomeBar";
+import Modal from "./header/Modal";
 import DealOfTheDay from "./DealOfTheDay";
 import "./App.css";
 import ProductSection from "./ProductSection";

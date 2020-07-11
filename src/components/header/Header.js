@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Header.css";
-import WelcomeBar from "./WelcomeBar";
+import Modal from "./Modal";
 
 function Header() {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      {showModal && <WelcomeBar />}
+      {showModal && <Modal />}
       <div className="header">
         <div className="rose">Grace Shopper</div>
         <form method="get" action="">
@@ -17,7 +17,7 @@ function Header() {
             <div className="td" id="s-cover">
               <button type="submit" className="submit">
                 <div id="s-circle"></div>
-                <span></span>
+                <span>Find</span>
               </button>
             </div>
           </div>

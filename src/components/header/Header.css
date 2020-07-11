@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
 
 .header {
-  margin: 10px 20px 10px 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  margin: 10px 10px 10px 10px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
   background-image: linear-gradient(
     to right,
     rgb(224, 46, 46),
@@ -12,7 +11,7 @@
     rgb(255, 233, 136)
   );
   padding-top: 30px;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 .header:hover {
@@ -23,10 +22,10 @@
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.534),
     0 100px 80px rgba(0, 0, 0, 0.12);
 
-  min-height: 100px;
+  /* min-height: 100px;
   width: 98vw;
   margin: 10px auto;
-  border-radius: 1px;
+  border-radius: 1px; */
 }
 
 .title {
@@ -74,12 +73,12 @@ button {
 
 .submit {
   background-color: white;
-  margin-right: 400px;
+
   position: relative;
 
   display: block;
-  width: 50px;
-  height: 150px;
+  width: 80px;
+  height: 67px;
   cursor: pointer;
 }
 
@@ -99,6 +98,7 @@ button {
 
 form {
   height: 96px;
+  margin-top: 30px;
 }
 
 input {
@@ -106,7 +106,6 @@ input {
 }
 
 input[type="text"] {
-  width: 70%;
   height: 65px;
   font-size: 60px;
   line-height: 1;
@@ -116,7 +115,7 @@ input[type="text"]::placeholder {
   color: #ffffff;
 }
 
-#s-cover {
+/* #s-cover {
   width: 1px;
   padding-left: 35px;
 }
@@ -191,4 +190,4 @@ input[type="text"]::placeholder {
   right: -6px;
   width: 40px;
   background-color: #fff;
-}
+} */
