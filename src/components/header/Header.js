@@ -6,7 +6,7 @@ function Header() {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      {showModal && <Modal />}
+      {showModal && <Modal setShowModal={setShowModal} />}
       <div className="header">
         <div className="rose">Grace Shopper</div>
         <form method="get" action="">
@@ -16,7 +16,8 @@ function Header() {
             </div>
             <div className="td" id="s-cover">
               <button type="submit" className="submit">
-                <div id="s-circle"></div>
+                <div className="button__horizontal"></div>
+                <div className="button__vertical"></div>
                 <span>Find</span>
               </button>
             </div>
