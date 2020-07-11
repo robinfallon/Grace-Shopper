@@ -76,8 +76,4 @@ usersRouter.post('/register', async (req, res, next) => {
   }
 })
 
-// usersRouter.use((err, req, res, next) => {
-//   res.send(err)
-// })
-
 module.exports = usersRouter;
