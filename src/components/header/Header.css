@@ -3,7 +3,7 @@
 .header {
   margin: 10px 10px 10px 10px;
   display: grid;
-  grid-template-columns: 2.25fr 1.50fr 1.05fr;
+  grid-template-columns: 2fr 2fr 1.05fr;
   background-image: linear-gradient(
     to right,
     rgb(224, 46, 46),
@@ -46,9 +46,9 @@
 
 .rose {
   font-size: 5rem;
-  padding-top: 30px;
+  padding-top: 42px;
   text-align: center;
-  margin-left: -100px;
+  margin-left: -50px;
   height: 15vh;
   line-height: 5vh;
   color: #fcedd8;
