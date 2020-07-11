@@ -89,4 +89,7 @@ button.big-button:active::before {
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
