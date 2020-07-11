@@ -19,10 +19,9 @@ async function createUser({ username, password, seller, shoppingcart }) {
 }
 
 async function getUserByUsername(userName) {
-  // first get the user
   try {
     const {rows} = await client.query(`
-      SELECT *
+      SELECT username
       FROM users
       WHERE username = $1;
     `, [userName]);
@@ -30,7 +29,7 @@ async function getUserByUsername(userName) {
     const [user] = rows;
     return user;
   } catch (error) {
-    console.error(error)
+    throw error;
   }
 }
 

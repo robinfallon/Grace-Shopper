@@ -18,4 +18,9 @@ apiRouter.use("/tax", taxRouter);
 const reviewRouter = require("./reviews");
 apiRouter.use("/reviews", reviewRouter);
 
+usersRouter.use((err, req, res, next) => {
+  res.send(err)
+})
+
 module.exports = apiRouter;
+                       

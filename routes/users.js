@@ -14,7 +14,7 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
-router.post('/login', async (req, res, next) => {
+usersRouter.post('/login', async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -36,15 +36,16 @@ router.post('/login', async (req, res, next) => {
         res.send({ message: "you're logged in!", token });
     };
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(error);
   }
 });
 
-router.post('/register', async (req, res, next) => {
+usersRouter.post('/register', async (req, res, next) => {
   try {
     const {username, password} = req.body;
     const queriedUser = await getUserByUsername(username);
+    console.log(username, password)
     if (queriedUser) {
       next({
         name: 'UserExistsError',
@@ -59,12 +60,13 @@ router.post('/register', async (req, res, next) => {
       bcrypt.hash(password, SALT_COUNT, async function(err, hashedPassword) {
         const user = await createUser({
           username,
-          password: hashedPassword
+          password: hashedPassword,
+          seller: true,
+          shoppingcart: ""
         });
         if (err) {
           next(err);
         } else {
-
           res.send({user});
         }
       });
@@ -73,5 +75,9 @@ router.post('/register', async (req, res, next) => {
     next(error)
   }
 })
+
+// usersRouter.use((err, req, res, next) => {
+//   res.send(err)
+// })
 
 module.exports = usersRouter;

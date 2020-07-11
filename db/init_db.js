@@ -11,6 +11,8 @@ const {
   getReviewsByID,
   getAllTaxes,
   createTaxRate,
+  getUserByUsername,
+  getUser,
 } = require("./index");
 
 async function createInitialReviews() {
@@ -542,6 +544,7 @@ async function testDB() {
     await createInitialUsers();
     await createInitialProducts();
     await createInitialReviews();
+    const userN = await getUserByUsername("arman")
     await seedTaxes();
     const users = await getAllUsers();
     console.log(users);
@@ -557,6 +560,9 @@ async function testDB() {
     console.log("line 104", products);
     const taxes = await getAllTaxes();
     console.log("taxes", taxes);
+    console.log("username", userN)
+    const getUsers = await getUser("arman", "bertie99")
+    console.log("getUser", getUsers)
   } catch (error) {
     console.error(error);
   } finally {
