@@ -29,6 +29,12 @@
   width: 40%;
 }
 
+.productMap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 /* 	Product Name */
 #container .product-details h1 {
   font-family: "Old Standard TT", serif;
