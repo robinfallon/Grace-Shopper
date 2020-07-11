@@ -12,6 +12,7 @@ function createResult(productData) {
       price={productData.price}
       category={productData.category}
       image={productData.image}
+      review={productData.reviews}
     />
   );
 }
