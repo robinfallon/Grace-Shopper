@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web");
 
 .productMap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #container {
@@ -11,9 +12,10 @@
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
-  margin: 3em auto;
-  height: 350px;
-  width: 900px;
+  margin: 2em auto;
+  height: 260px;
+  width: 600px;
+  border: 1px solid black;
 }
 
 /* 	Product details  */

@@ -85,10 +85,22 @@ button.big-button:active::before {
 }
 
 .tabs {
-  padding-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 20px;
+}
+
+.big-button {
+  display: flex;
+  flex-grow: unset;
+  justify-content: center;
+  margin: 3px 3px 3px 3px;
 }
