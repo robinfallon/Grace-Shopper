@@ -1,10 +1,16 @@
 import React from "react";
 import "./Modal.css";
 
-function Modal() {
+function Modal({ setShowModal }) {
   return (
     <div className="welcome">
       <div className="loginSection">
+        <div
+          className="theBlur"
+          onClick={() => {
+            setShowModal(false);
+          }}
+        ></div>
         <div className="login-wrap">
           <div className="login-html">
             <input
