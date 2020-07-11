@@ -1,6 +1,9 @@
 import React from "react";
 
 function SingleCard(props) {
+  console.log("props", props)
+  // const test = props.review.map()
+  // console.log("test", test)
   return (
     <div id="container">
       <div class="product-details">
@@ -13,6 +16,8 @@ function SingleCard(props) {
           <i class="fa fa-star-half-o" aria-hidden="true"></i>
           <i class="fa fa-star-o" aria-hidden="true"></i>
   </span>*/}
+      <button id="review" onClick={console.log()}>Reviews</button>
+      {props.review.map(review => {return <span>{review.review}</span>})}
       </div>
 
       <div class="product-image">

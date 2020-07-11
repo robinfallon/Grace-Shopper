@@ -577,8 +577,6 @@ async function testDB() {
     const taxes = await getAllTaxes();
     console.log("taxes", taxes);
     console.log("username", userArman, userJames, userRobin)
-    // const getUsers = await getUser("arman", "bertie99")
-    // console.log("getUser", getUsers)
   } catch (error) {
     console.error(error);
   } finally {
