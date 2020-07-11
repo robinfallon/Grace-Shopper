@@ -1,4 +1,5 @@
 const { Client } = require("pg");
+const bcrypt = require('bcrypt');
 
 const client = new Client("postgres://localhost:5432/capstone");
 
