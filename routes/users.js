@@ -1,13 +1,8 @@
 const apiRouter = require("express");
 const usersRouter = apiRouter.Router();
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const {
-  createUser,
-  getUserByUsername,
-  getUser,
-  getAllUsers,
-} = require("../db");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { createUser, getUserByUsername, getUser } = require('../db');
 const SALT_COUNT = 10;
 
 usersRouter.get("/", async (req, res, next) => {
@@ -19,65 +14,70 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
-usersRouter.post("/login", async (req, res, next) => {
+usersRouter.post('/login', async (req, res, next) => {
   const { username, password } = req.body;
+
   if (!username || !password) {
     next({
-      name: "MissingUserNameOrPassword",
-      message: "Please supply both a username and password",
+      name: 'MissingUserNameOrPassword',
+      message: 'Please supply both a username and password'
     });
   }
+
   try {
-    const user = await getUser({ username, password });
-    if (!user) {
+    const user = await getUser({username, password});
+    if(!user) {
       next({
-        name: "WrongUserNameOrPassword",
-        message: "Username or password is incorrect",
-      });
+        name: 'WrongUserNameOrPassword',
+        message: 'Username or password is incorrect',
+      })
     } else {
-      const token = jwt.sign(
-        { id: user.id, username: user.username },
-        process.env.JWT_SECRET,
-        { expiresIn: "1w" }
-      );
-      res.send({ message: "you're logged in!", token });
-    }
+      const token = jwt.sign({id: user.id, username: user.username}, process.env.JWT_SECRET, { expiresIn: '1w' });
+        res.send({ message: "you're logged in!", token });
+    };
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(error);
   }
 });
 
-usersRouter.post("/register", async (req, res, next) => {
+usersRouter.post('/register', async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const {username, password} = req.body;
     const queriedUser = await getUserByUsername(username);
     if (queriedUser) {
       next({
-        name: "UserExistsError",
-        message: "A user by that username already exists",
+        name: 'UserExistsError',
+        message: 'A user by that username already exists'
       });
     } else if (password.length < 8) {
       next({
-        name: "PasswordLengthError",
-        message: "Password Too Short!",
+        name: 'PasswordLengthError',
+        message: 'Password Too Short!'
       });
     } else {
-      bcrypt.hash(password, SALT_COUNT, async function (err, hashedPassword) {
+      bcrypt.hash(password, SALT_COUNT, async function(err, hashedPassword) {
         const user = await createUser({
           username,
           password: hashedPassword,
+          seller: true,
+          shoppingcart: ""
         });
         if (err) {
           next(err);
         } else {
-          res.send({ user });
+   const token = jwt.sign({id: user.id, username: user.username}, process.env.JWT_SECRET, { expiresIn: '1w' });
+          res.send({ message: "you're logged in!", token });
         }
       });
     }
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
+
+// usersRouter.use((err, req, res, next) => {
+//   res.send(err)
+// })
 
 module.exports = usersRouter;

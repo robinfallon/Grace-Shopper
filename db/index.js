@@ -18,6 +18,37 @@ async function createUser({ username, password, seller, shoppingcart }) {
   }
 }
 
+async function getUserByUsername(userName) {
+  try {
+    const {rows} = await client.query(`
+      SELECT username
+      FROM users
+      WHERE username = $1;
+    `, [userName]);
+    if (!rows || !rows.length) return null;
+    const [user] = rows;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUser({username, password}) {
+  if (!username || !password) {
+    return;
+  }
+
+  try {
+    const user = await getUserByUsername(username);
+    if(!user) return;
+    const matchingPassword = bcrypt.compareSync(password, user.password);
+    if(!matchingPassword) return;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 async function createProduct({
   itemname,
   description,
@@ -182,36 +213,27 @@ async function getReviewsByID(id) {
   }
 }
 
-async function getReviewsByUserID(id) {
-  try {
-    const { rows } = await client.query(
-      `
-    SELECT *
-    FROM reviews
-    WHERE "userId"=$1
-    `,
-      [id]
-    );
-    return rows;
-  } catch (error) {
-    throw error;
-  }
-}
+async function updateReview({productId, userId, reviews}){
+  const {rows} = fields
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
 
-async function getReviewsByProductID(id) {
   try {
-    const { rows } = await client.query(
-      `
-    SELECT *
-    FROM reviews
-    WHERE "productId"=$1
-    `,
-      [id]
-    );
-    return rows;
-  } catch (error) {
-    throw error;
-  }
+    if (setString.length > 0) {
+      await client.query(
+        `
+        UPDATE reviews
+        SET ${setString}
+        WHERE id=${productId}
+        RETURNING *;
+      `,
+        Object.values(fields)
+      );
+    }
+} catch(error){
+  throw error;
+}
 }
 
 async function updateReview(productId, fields = {}) {
@@ -298,10 +320,6 @@ module.exports = {
   getReviewsByID,
   getAllTaxes,
   createTaxRate,
-  getReviewsByProductID,
-  getReviewsByUserID,
-  updateReview,
-  getUser,
   getUserByUsername,
-  destroyReview,
+  getUser,
 };
