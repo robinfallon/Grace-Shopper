@@ -3,11 +3,11 @@ import "./Tabs.css";
 function Tabs() {
   return (
     <div className="tabs">
-      <button className="button">Computers</button>
-      <button className="button">Cameras</button>
-      <button className="button">Lenses</button>
-      <button className="button">Phones</button>
-      <button className="button">Tablets</button>
+      <button className="big-button">Computers</button>
+      <button className="big-button">Phones</button>
+      <button className="big-button">Tablets</button>
+      <button className="big-button">Cameras</button>
+      <button className="big-button">Lenses</button>
     </div>
   );
 }
