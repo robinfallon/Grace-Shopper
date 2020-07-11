@@ -1,7 +1,7 @@
 import React from "react";
-import "./WelcomeBar.css";
+import "./Modal.css";
 
-function WelcomeBar() {
+function Modal() {
   return (
     <div className="welcome">
       <div className="loginSection">
@@ -123,4 +123,4 @@ function WelcomeBar() {
   );
 }
 
-export default WelcomeBar;
+export default Modal;

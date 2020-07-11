@@ -45,7 +45,6 @@ usersRouter.post('/register', async (req, res, next) => {
   try {
     const {username, password} = req.body;
     const queriedUser = await getUserByUsername(username);
-    console.log(username, password)
     if (queriedUser) {
       next({
         name: 'UserExistsError',
@@ -67,7 +66,8 @@ usersRouter.post('/register', async (req, res, next) => {
         if (err) {
           next(err);
         } else {
-          res.send({user});
+   const token = jwt.sign({id: user.id, username: user.username}, process.env.JWT_SECRET, { expiresIn: '1w' });
+          res.send({ message: "you're logged in!", token });
         }
       });
     }

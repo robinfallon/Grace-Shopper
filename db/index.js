@@ -236,6 +236,77 @@ async function updateReview({productId, userId, reviews}){
 }
 }
 
+async function updateReview(productId, fields = {}) {
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+  try {
+    if (setString.length > 0) {
+      const { rows } = await client.query(
+        `
+        UPDATE reviews
+        SET ${setString}
+        WHERE id=${productId}
+        RETURNING *;
+      `,
+        Object.values(fields)
+      );
+      return rows;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUser({ username, password }) {
+  if (!username || !password) {
+    return;
+  }
+  try {
+    const user = await getUserByUsername(username);
+    if (!user) return;
+    const matchingPassword = bcrypt.compareSync(password, user.password);
+    if (!matchingPassword) return;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUserByUsername(userName) {
+  try {
+    const { rows } = await client.query(
+      `
+      SELECT *
+      FROM users
+      WHERE username = $1;
+    `,
+      [userName]
+    );
+    if (!rows || !rows.length) return null;
+    const [user] = rows;
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function destroyReview(id) {
+  try {
+    console.log(id, "id");
+    const { rows } = await client.query(
+      `
+      DELETE FROM reviews
+      WHERE id=${id}
+      RETURNING *;
+      `
+    );
+    console.log(rows);
+  } catch ({ name, message }) {
+    console.log({ name, message });
+  }
+}
+
 module.exports = {
   client,
   getAllUsers,
