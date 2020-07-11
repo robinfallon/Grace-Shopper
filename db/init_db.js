@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+const SALT_COUNT = 10;
 const {
   client,
   getAllUsers,
@@ -504,22 +506,34 @@ async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
 
-    const arman = await createUser({
-      username: "arman",
-      password: "bertie99",
-      seller: true,
+    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+      const arman = await createUser({
+        username: "arman",
+        password: hashedPassword,
+        seller: true,
+        shoppingcart: ""
+      })
+      console.log(arman)
     });
-    const james = await createUser({
-      username: "james",
-      password: "bertie99",
-      seller: true,
+    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+      const james = await createUser({
+        username: "james",
+        password: hashedPassword,
+        seller: true,
+        shoppingcart: ""
+      })
+      console.log(james)
     });
-    const robin = await createUser({
-      username: "robin",
-      password: "bertie99",
-      seller: true,
+    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+      const robin = await createUser({
+        username: "robin",
+        password: hashedPassword,
+        seller: true,
+        shoppingcart: ""
+      })
+      console.log(robin)
     });
-    console.log(arman, james, robin);
+
 
     console.log("Finished creating users!");
   } catch (error) {
@@ -544,7 +558,9 @@ async function testDB() {
     await createInitialUsers();
     await createInitialProducts();
     await createInitialReviews();
-    const userN = await getUserByUsername("arman")
+    const userArman = await getUserByUsername("arman")
+    const userJames = await getUserByUsername("james")
+    const userRobin = await getUserByUsername("robin")
     await seedTaxes();
     const users = await getAllUsers();
     console.log(users);
@@ -560,9 +576,9 @@ async function testDB() {
     console.log("line 104", products);
     const taxes = await getAllTaxes();
     console.log("taxes", taxes);
-    console.log("username", userN)
-    const getUsers = await getUser("arman", "bertie99")
-    console.log("getUser", getUsers)
+    console.log("username", userArman, userJames, userRobin)
+    // const getUsers = await getUser("arman", "bertie99")
+    // console.log("getUser", getUsers)
   } catch (error) {
     console.error(error);
   } finally {
