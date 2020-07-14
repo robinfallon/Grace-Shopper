@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Brouter, Switch, Route } from "react-router-dom";
 
 import { getSomething } from "../api";
 import Header from "./header/Header";
 import Modal from "./header/Modal";
-import DealOfTheDay from "./DealOfTheDay";
+
 import "./App.css";
-import ProductSection from "./ProductSection";
+import ProductSection from "./body/ProductSection";
 import Tabs from "../components/header/Tabs";
 import AddToCart from "./AddToCart";
 
 
+import Cart from "./cart/Checkout";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -25,12 +27,14 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-      <Header />
-      <Tabs />
-      <ProductSection />
-      <AddToCart />
-    </div>
+    <Brouter>
+      <div className="App">
+        <Route path="/cart" component={Cart} />
+        <Header />
+        <Tabs />
+        <ProductSection />
+      </div>
+    </Brouter>
   );
 };
 

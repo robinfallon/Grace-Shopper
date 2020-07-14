@@ -21,7 +21,7 @@ const AddToCart = ({
                        itemname
                     })
                 }} 
-            >Add to cart (+)
+            >Add to cart 
             </button>
             <button className="removeFromCartButton"
                 onClick={() => {
@@ -30,7 +30,7 @@ const AddToCart = ({
                         itemname
                     })
                 }}
-            >Remove from cart (-)
+            >Remove from cart
             </button>
         </div>
     );

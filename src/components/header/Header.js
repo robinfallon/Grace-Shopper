@@ -31,6 +31,9 @@ function Header() {
         >
           Log in or Sign up!
         </button>
+        <button className="thecartbtn">
+          <a href="/cart">cart</a>
+        </button>
       </div>
     </>
   );
