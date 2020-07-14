@@ -7,6 +7,9 @@ import DealOfTheDay from "./DealOfTheDay";
 import "./App.css";
 import ProductSection from "./ProductSection";
 import Tabs from "../components/header/Tabs";
+import AddToCart from "./AddToCart";
+
+
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -26,6 +29,7 @@ const App = () => {
       <Header />
       <Tabs />
       <ProductSection />
+      <AddToCart />
     </div>
   );
 };
