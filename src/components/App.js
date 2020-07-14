@@ -9,6 +9,7 @@ import "./App.css";
 import ProductSection from "./body/ProductSection";
 import Tabs from "../components/header/Tabs";
 import Cart from "./cart/Checkout";
+import ProductPage from "./body/ProductPage";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -26,10 +27,11 @@ const App = () => {
   return (
     <Brouter>
       <div className="App">
-        <Route path="/cart" component={Cart} />
         <Header />
-        <Tabs />
-        <ProductSection />
+        <Switch>
+          <Route path="/cart" component={Cart} />
+          <Route path="/" component={ProductPage} />
+        </Switch>
       </div>
     </Brouter>
   );
