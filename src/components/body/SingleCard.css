@@ -1,0 +1,19 @@
+.thebuttonarea {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding-top: 10px;
+}
+
+.review {
+  font-size: 14px;
+  position: relative;
+  margin-top: 10px;
+
+  border-radius: 10%;
+}
+
+.addtocart {
+  font-size: 14px;
+  position: relative;
+  margin-top: 10px;
+}
