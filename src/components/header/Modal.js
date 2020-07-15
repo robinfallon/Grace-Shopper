@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Modal.css";
+import { loginUser } from "../../api/index";
+
+function helloWorld() {
+  console.log("hello, world");
+}
 
 function Modal({ setShowModal }) {
+  const [username, setUser] = useState("");
+  const [password, setPassword] = useState("");
+
+  const changeUser = (event) => {
+    setUser(event.target.value);
+  };
+
+  const changePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const cancelCourse = () => {
+    console.log("canceCourse Link 10 form.JS");
+    setUser("");
+    setPassword("");
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    loginUser(username, password).then(() => {
+      cancelCourse();
+    });
+  };
+
   return (
     <div className="welcome">
       <div className="loginSection">
@@ -38,7 +67,12 @@ function Modal({ setShowModal }) {
                   <label for="user" className="label">
                     Username
                   </label>
-                  <input id="user" type="text" className="input"></input>
+                  <input
+                    id="user"
+                    type="text"
+                    className="input"
+                    onChange={changeUser}
+                  ></input>
                 </div>
                 <div className="group">
                   <label for="pass" className="label">
@@ -49,6 +83,7 @@ function Modal({ setShowModal }) {
                     type="password"
                     className="input"
                     data-type="password"
+                    onChange={changePassword}
                   ></input>{" "}
                 </div>
                 <div className="group">
@@ -67,6 +102,7 @@ function Modal({ setShowModal }) {
                     type="submit"
                     className="button"
                     value="Sign In"
+                    onClick={handleSubmit}
                   ></input>
                 </div>
                 <div className="hr"></div>

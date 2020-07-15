@@ -481,7 +481,11 @@ async function createTables() {
           id SERIAL PRIMARY KEY,
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id)
-        )
+        );
+        CREATE TABLE anonshoppingcart(
+          id SERIAL PRIMARY KEY,
+          "productId" SERIAL REFERENCES products (id)
+        );
       `);
   } catch (error) {
     throw error;
@@ -494,6 +498,7 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
+    DROP TABLE IF EXISTS anonshoppingcart;
     DROP TABLE IF EXISTS shoppingcart;
       DROP TABLE IF EXISTS productreviews;
       DROP TABLE IF EXISTS taglinks;

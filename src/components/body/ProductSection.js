@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import SingleCard from "./SingleCard";
 import "./ProductSection.css";
+import { getMyProducts } from "../../api/index";
 
 function createResult(productData) {
   return (
@@ -15,12 +15,6 @@ function createResult(productData) {
       review={productData.reviews}
     />
   );
-}
-
-async function getMyProducts() {
-  const myProducts = await axios.get("/api/products");
-  console.log("My products are", myProducts);
-  return myProducts.data.allProducts;
 }
 
 function SearchResults() {
