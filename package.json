@@ -30,7 +30,10 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
-    "scss": "^0.2.4"
+    "react-stripe-checkout": "^2.6.3",
+    "scss": "^0.2.4",
+    "stripe": "^8.71.0",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
