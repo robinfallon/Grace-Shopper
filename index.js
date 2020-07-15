@@ -5,7 +5,7 @@ const stripe = require("stripe")(
   "sk_test_51H5G6FHKLvPBIQUE9n5PLnwRcWyJ6dfnUVzaHyNJBFR8WS1AQxsNzWIay3984lQDft4jmMEdAwlZJGOLBFC5ZbVV00midyU2RK"
 );
 
-const uuid = require("uuid/v4");
+const uuid = require("uuid");
 
 // create logs for everything
 const morgan = require("morgan");
