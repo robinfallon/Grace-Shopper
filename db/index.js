@@ -1,5 +1,6 @@
 const { Client } = require("pg");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const client = new Client("postgres://localhost:5432/capstone");
 
@@ -21,11 +22,15 @@ async function createUser({ username, password, seller, shoppingcart }) {
 
 async function getUserByUsername(userName) {
   try {
-    const {rows} = await client.query(`
+    console.log("firing");
+    const { rows } = await client.query(
+      `
       SELECT username
       FROM users
       WHERE username = $1;
-    `, [userName]);
+    `,
+      [userName]
+    );
     if (!rows || !rows.length) return null;
     const [user] = rows;
     return user;
@@ -34,21 +39,23 @@ async function getUserByUsername(userName) {
   }
 }
 
-async function getUser({username, password}) {
+async function getUser({ username, password }) {
+  console.log("running");
   if (!username || !password) {
     return;
   }
 
   try {
     const user = await getUserByUsername(username);
-    if(!user) return;
+    if (!user) return;
+    console.log("user.password", user.password);
     const matchingPassword = bcrypt.compareSync(password, user.password);
-    if(!matchingPassword) return;
+    if (!matchingPassword) return;
     return user;
   } catch (error) {
     throw error;
   }
-};
+}
 
 async function createProduct({
   itemname,
@@ -214,8 +221,8 @@ async function getReviewsByID(id) {
   }
 }
 
-async function updateReview({productId, userId, reviews}){
-  const {rows} = fields
+async function updateReview({ productId, userId, reviews }) {
+  const { rows } = fields;
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
     .join(", ");
@@ -232,9 +239,9 @@ async function updateReview({productId, userId, reviews}){
         Object.values(fields)
       );
     }
-} catch(error){
-  throw error;
-}
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function updateReview(productId, fields = {}) {
@@ -254,6 +261,37 @@ async function updateReview(productId, fields = {}) {
       );
       return rows;
     }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateCart(userId, productId) {
+  try {
+    console.log(productId);
+    const { rows } = await client.query(
+      `
+      INSERT INTO shoppingcart("userId", "productId")
+      VALUES ($1, $2)
+      `,
+      [userId, productId]
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getCartbyUserId(userId) {
+  try {
+    const { rows } = await client.query(
+      `
+      SELECT *
+      FROM shoppingcart
+      WHERE "userId" = $1;
+    `,
+      [userId]
+    );
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -323,4 +361,6 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
+  updateCart,
+  getCartbyUserId,
 };
