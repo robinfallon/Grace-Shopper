@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 const {
   client,
@@ -15,6 +15,8 @@ const {
   createTaxRate,
   getUserByUsername,
   getUser,
+  updateCart,
+  getCartbyUserId,
 } = require("./index");
 
 async function createInitialReviews() {
@@ -475,6 +477,11 @@ async function createTables() {
           state varchar NOT NULL,
           rate varchar NOT NULL
         );
+        CREATE TABLE shoppingcart(
+          id SERIAL PRIMARY KEY,
+          "productId" SERIAL REFERENCES products (id),
+          "userId" SERIAL REFERENCES users (id)
+        )
       `);
   } catch (error) {
     throw error;
@@ -487,6 +494,7 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
+    DROP TABLE IF EXISTS shoppingcart;
       DROP TABLE IF EXISTS productreviews;
       DROP TABLE IF EXISTS taglinks;
       DROP TABLE IF EXISTS reviews;
@@ -506,38 +514,45 @@ async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
 
-    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
       const arman = await createUser({
         username: "arman",
         password: hashedPassword,
         seller: true,
-        shoppingcart: ""
-      })
-      console.log(arman)
+      });
+      console.log(arman);
     });
-    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
       const james = await createUser({
         username: "james",
         password: hashedPassword,
         seller: true,
-        shoppingcart: ""
-      })
-      console.log(james)
+      });
+      console.log(james);
     });
-    bcrypt.hash("bertie99", SALT_COUNT, async function(err, hashedPassword) {
+    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
       const robin = await createUser({
         username: "robin",
         password: hashedPassword,
         seller: true,
-        shoppingcart: ""
-      })
-      console.log(robin)
+      });
+      console.log(robin);
     });
-
 
     console.log("Finished creating users!");
   } catch (error) {
     console.error("Error creating users!");
+    throw error;
+  }
+}
+
+async function cartUpdate() {
+  try {
+    console.log("testing cart update");
+    const cart1 = await updateCart(1, 1);
+    console.log("Finished updating cart");
+  } catch (error) {
+    console.log("Error Updating Cart");
     throw error;
   }
 }
@@ -557,10 +572,12 @@ async function testDB() {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
+    await cartUpdate();
+    const cart = await getCartbyUserId(1);
     await createInitialReviews();
-    const userArman = await getUserByUsername("arman")
-    const userJames = await getUserByUsername("james")
-    const userRobin = await getUserByUsername("robin")
+    const userArman = await getUserByUsername("arman");
+    const userJames = await getUserByUsername("james");
+    const userRobin = await getUserByUsername("robin");
     await seedTaxes();
     const users = await getAllUsers();
     console.log(users);
@@ -576,7 +593,8 @@ async function testDB() {
     console.log("line 104", products);
     const taxes = await getAllTaxes();
     console.log("taxes", taxes);
-    console.log("username", userArman, userJames, userRobin)
+    console.log("username", userArman, userJames, userRobin);
+    console.log(cart);
   } catch (error) {
     console.error(error);
   } finally {
