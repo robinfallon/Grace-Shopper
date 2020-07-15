@@ -1,7 +1,14 @@
 import React from "react";
+import "./CheckOut.css";
 
-function Checkout() {
-  return <div>Hello</div>;
+function CheckOut() {
+  return (
+    <div>
+      <div className="greeting">
+        <p>Ready to leave Arman? Your total is $100</p>
+      </div>
+    </div>
+  );
 }
 
-export default Checkout;
+export default CheckOut;
