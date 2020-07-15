@@ -266,6 +266,37 @@ async function updateReview(productId, fields = {}) {
   }
 }
 
+async function updateCart(userId, productId) {
+  try {
+    console.log(productId);
+    const { rows } = await client.query(
+      `
+      INSERT INTO shoppingcart("userId", "productId")
+      VALUES ($1, $2)
+      `,
+      [userId, productId]
+    );
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getCartbyUserId(userId) {
+  try {
+    const { rows } = await client.query(
+      `
+      SELECT *
+      FROM shoppingcart
+      WHERE "userId" = $1;
+    `,
+      [userId]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getUser({ username, password }) {
   if (!username || !password) {
     return;
@@ -330,4 +361,6 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
+  updateCart,
+  getCartbyUserId,
 };
