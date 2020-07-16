@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import { loginUser } from "../../api/index";
+import { loginUser, registerUser } from "../../api/index";
 
 function helloWorld() {
   console.log("hello, world");
@@ -9,6 +9,7 @@ function helloWorld() {
 function Modal({ setShowModal }) {
   const [username, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [regispassword, setConfirm] = useState("");
 
   const changeUser = (event) => {
     setUser(event.target.value);
@@ -18,10 +19,27 @@ function Modal({ setShowModal }) {
     setPassword(event.target.value);
   };
 
+  const confirmPassword = (event) => {
+    setConfirm(event.target.value);
+  };
+
   const cancelCourse = () => {
     console.log("canceCourse Link 10 form.JS");
     setUser("");
     setPassword("");
+    setConfirm("");
+  };
+
+  //confused need help - signup keeps flipping around lol
+  const handleRegis = (event) => {
+    event.preventDefault();
+    if (password === regispassword) {
+      registerUser(username, password).then(() => {
+        cancelCourse();
+      });
+    } else {
+      alert("Passwords need to match!");
+    }
   };
 
   const handleSubmit = (event) => {
@@ -115,7 +133,12 @@ function Modal({ setShowModal }) {
                   <label for="user" className="label">
                     Username
                   </label>
-                  <input id="user" type="text" className="input"></input>
+                  <input
+                    id="user"
+                    type="text"
+                    className="input"
+                    onChange={changeUser}
+                  ></input>
                 </div>
                 <div className="group">
                   <label for="pass" className="label">
@@ -126,6 +149,7 @@ function Modal({ setShowModal }) {
                     type="password"
                     className="input"
                     data-type="password"
+                    onChange={changePassword}
                   ></input>
                 </div>
                 <div className="group">
@@ -137,6 +161,7 @@ function Modal({ setShowModal }) {
                     type="password"
                     className="input"
                     data-type="password"
+                    onChange={confirmPassword}
                   ></input>
                 </div>
                 <div className="group">
@@ -150,6 +175,7 @@ function Modal({ setShowModal }) {
                     type="submit"
                     className="button"
                     value="Sign Up"
+                    onClick={handleRegis}
                   ></input>
                 </div>
                 <div className="hr"></div>
