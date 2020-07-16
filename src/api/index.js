@@ -21,10 +21,11 @@ export async function getMyProducts() {
 
 export async function loginUser(username, password) {
   try {
-    const { data } = await axios.get("/api/users", {
+    const { data } = await axios.post("/api/users/login", {
       username,
       password,
     });
+    console.log(data);
     return data;
   } catch (error) {
     throw error;
