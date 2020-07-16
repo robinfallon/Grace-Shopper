@@ -18,14 +18,14 @@ function SingleCard(props) {
   </span>*/}
       <button id="review" onClick={console.log()}>Reviews</button>
       <br></br>
-      <button id="addToCart" onClick={addToCart({
+      <button id="addToCart" onClick={() => {addToCart({
                        id, 
                        itemname
-                    })}>Add to Cart</button>
-      <button id="removeFromCart" onClick={removeFromCart({
+                    })}}>Add to Cart</button>
+      <button id="removeFromCart" onClick={() => {removeFromCart({
                         id,
                         itemname
-                    })}>Remove From Cart</button>
+                    })}}>Remove from Cart</button>
       {props.review.map(review => {return <span>{review.review}</span>})}
       </div>
 
