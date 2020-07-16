@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Brouter, Switch, Route } from "react-router-dom";
-
 import { getSomething } from "../api";
-import Header from "./header/Header";
+
 import Modal from "./header/Modal";
-
 import "./App.css";
-import ProductSection from "./body/ProductSection";
-import Tabs from "../components/header/Tabs";
-import AddToCart from "./AddToCart";
-
-
-import Cart from "./cart/Checkout";
-import ProductPage from "./body/ProductPage";
+import Cart from "./cart/CartPage";
+import Main from "./Main";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -30,10 +23,9 @@ const App = () => {
   return (
     <Brouter>
       <div className="App">
-        <Header />
         <Switch>
           <Route path="/cart" component={Cart} />
-          <Route path="/" component={ProductPage} />
+          <Main path="/" component={Main} />
         </Switch>
       </div>
     </Brouter>

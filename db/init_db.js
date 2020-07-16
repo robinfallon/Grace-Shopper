@@ -159,8 +159,7 @@ async function createInitialProducts() {
         "https://images.idgesg.net/images/article/2019/04/ipad-air-2019-browsing-100792687-large.jpg",
     });
     const camera1 = await createProduct({
-      itemname:
-        "Canon PowerShot ELPH 180 Digital Camera w/ Image Stabilization and Smart AUTO Mode (Silver), 0.90in. x 3.70in. x 2.10in. - 1093C001",
+      itemname: "Canon PowerShot ELPH 180 Digital Camera",
       description:
         "Canon PowerShot ELPH 180 Camera. White Balance Control-Auto, Daylight, Cloudy, Tungsten, Fluorescent, Fluorescent H, Custom, Built-in Flash: Auto, On, Slow Synchro, Off , Flash Range: 1.6-9.8 ft. (W), 4.3-4.9 ft. (T), 50.0cm - 3.0m (W), 1.3-1.5m (T). Focusing Range: Normal: 2.0 in. (5.0cm) - infinity (W), 4.3 ft. (1.3m) - infinity (T), Auto: 0.4 in. (1.0cm) - infinity (W), 4.3 ft. (1.3m) - infinity (T), Macro: 0.4 in. - 1.6 ft. (1-50cm) (W), Infinity: 9.8 ft. (3.0m) - infinity (W), 9.8 ft. (3.0m) - infinity (T)",
       price: "109.00",
@@ -168,8 +167,7 @@ async function createInitialProducts() {
       image: "https://i.ytimg.com/vi/K_z3dIKqSuQ/maxresdefault.jpg",
     });
     const camera2 = await createProduct({
-      itemname:
-        'Kodak PIXPRO Astro Zoom AZ421-RD 16MP Digital Camera with 42X Optical Zoom and 3" LCD Screen (Red)',
+      itemname: "Kodak PIXPRO Astro Zoom AZ421-RD",
       description:
         "Passion and performance go hand in hand with our KODAK PIXPRO AZ421 digital camera from the Astro Zoom Collection. A 42X ultra long zoom lens with optical image stabilization delivers crisp, clear 16 megapixel close-ups, panorama or HD videos. Auto scene, object tracking, post-editing features and a host of powerful yet user-friendly settings make photography easy, fun and zero hassle. KODAK PIXPRO Cameras. Tell your story. Focal length 43 mm (wide) 108.6 mm (Tele)",
       price: "145.99",
@@ -178,8 +176,7 @@ async function createInitialProducts() {
         "https://i.pinimg.com/originals/26/01/da/2601dac544b483474d66533013a561d3.jpg",
     });
     const camera3 = await createProduct({
-      itemname:
-        'Kodak PIXPRO Astro Zoom AZ252-WH 16MP Digital Camera with 25X Optical Zoom and 3" LCD (White)',
+      itemname: "Kodak PIXPRO Astro Zoom AZ252-WH",
       description:
         "Discover a world of creativity at your fingertips. The AZ252 is the perfect bridge camera to pursue your passion for photography. With 16 Megapixels, 25x optical zoom and a wider angle lens than traditional models, This camera might just become your new best friend. Kodak PIXPRO digital cameras - tell your story.",
       price: "129.00",
@@ -205,8 +202,7 @@ async function createInitialProducts() {
       image: "https://images-na.ssl-images-amazon.com/images/I/716uqF6uUgL.jpg",
     });
     const phone3 = await createProduct({
-      itemname:
-        "Moto G Power Unlocked Made for US by Motorola 4/64GB 16MP Camera 2020 Black",
+      itemname: "Moto G Power Unlocked Made for US by Motorola",
       description:
         "Set yourself free from chargers and outlets. Say hello to moto g power. With its powerful 5000 mAh battery, you can go up to three full days1 on a single charge—and do the things you want without worrying about recharging. Shoot a panorama, close up, or anything in between with a versatile triple camera system. And thanks to the 6. 4” Max Vision Full HD+ display and dual stereo speakers tuned by Dolby, you’ll have an all-access pass to the world of entertainment. New moto g power. Power for life.",
       price: "249.99",
@@ -481,7 +477,11 @@ async function createTables() {
           id SERIAL PRIMARY KEY,
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id)
-        )
+        );
+        CREATE TABLE anonshoppingcart(
+          id SERIAL PRIMARY KEY,
+          "productId" SERIAL REFERENCES products (id)
+        );
       `);
   } catch (error) {
     throw error;
@@ -494,6 +494,7 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
+    DROP TABLE IF EXISTS anonshoppingcart;
     DROP TABLE IF EXISTS shoppingcart;
       DROP TABLE IF EXISTS productreviews;
       DROP TABLE IF EXISTS taglinks;

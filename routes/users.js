@@ -16,6 +16,7 @@ usersRouter.get("/", async (req, res, next) => {
 
 usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
+  console.log(req.body);
 
   if (!username || !password) {
     next({
@@ -54,7 +55,7 @@ usersRouter.post("/register", async (req, res, next) => {
         name: "UserExistsError",
         message: "A user by that username already exists",
       });
-    } else if (password.length < 6) {
+    } else if (password.length < 1) {
       next({
         name: "PasswordLengthError",
         message: "Password Too Short!",
