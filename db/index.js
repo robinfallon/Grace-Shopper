@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 
 const client = new Client("postgres://localhost:5432/capstone");
 
-async function createUser({ username, password, seller, shoppingcart }) {
+async function createUser({ username, password, email, seller, shoppingcart }) {
   try {
     const result = await client.query(
       `
       INSERT INTO users(username, password, seller, shoppingcart)
-      VALUES ($1, $2, $3, $4);
+      VALUES ($1, $2, $3, $5, $4);
     `,
-      [username, password, seller, shoppingcart]
+      [username, password, email, seller, shoppingcart]
     );
 
     return result;

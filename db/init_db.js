@@ -452,6 +452,7 @@ async function createTables() {
             username varchar UNIQUE NOT NULL,
             password varchar NOT NULL,
             seller varchar NOT NULL,
+            email varchar NOT NULL,
             shoppingcart varchar
         );
        CREATE TABLE products (
@@ -496,8 +497,6 @@ async function dropTables() {
     await client.query(`
     DROP TABLE IF EXISTS anonshoppingcart;
     DROP TABLE IF EXISTS shoppingcart;
-      DROP TABLE IF EXISTS productreviews;
-      DROP TABLE IF EXISTS taglinks;
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS products;
@@ -519,6 +518,7 @@ async function createInitialUsers() {
       const arman = await createUser({
         username: "arman",
         password: hashedPassword,
+        email: "test@yahoo.com",
         seller: true,
       });
       console.log(arman);
@@ -527,6 +527,7 @@ async function createInitialUsers() {
       const james = await createUser({
         username: "james",
         password: hashedPassword,
+        email: "test@yahoo.com",
         seller: true,
       });
       console.log(james);
@@ -535,6 +536,7 @@ async function createInitialUsers() {
       const robin = await createUser({
         username: "robin",
         password: hashedPassword,
+        email: "test@yahoo.com",
         seller: true,
       });
       console.log(robin);
