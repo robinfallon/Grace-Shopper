@@ -10,9 +10,14 @@ function Modal({ setShowModal }) {
   const [username, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [regispassword, setConfirm] = useState("");
+  const [email, setEmail] = useState("");
 
   const changeUser = (event) => {
     setUser(event.target.value);
+  };
+
+  const changeEmail = (event) => {
+    setEmail(event.target.value);
   };
 
   const changePassword = (event) => {
@@ -34,7 +39,7 @@ function Modal({ setShowModal }) {
   const handleRegis = (event) => {
     event.preventDefault();
     if (password === regispassword) {
-      registerUser(username, password).then(() => {
+      registerUser(username, password, email).then(() => {
         cancelCourse();
       });
     } else {
@@ -168,7 +173,12 @@ function Modal({ setShowModal }) {
                   <label for="pass" className="label">
                     Email Address
                   </label>
-                  <input id="pass" type="text" className="input"></input>
+                  <input
+                    id="pass"
+                    type="text"
+                    className="input"
+                    onChange={changeEmail}
+                  ></input>
                 </div>
                 <div className="group">
                   <input
