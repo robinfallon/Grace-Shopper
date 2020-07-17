@@ -575,7 +575,7 @@ async function testDB() {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
-    await cartUpdate();
+    //await cartUpdate();
     const cart = await getCartbyUserId(1);
     await createInitialReviews();
     const userArman = await getUserByUsername("arman");

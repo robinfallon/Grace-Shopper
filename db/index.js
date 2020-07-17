@@ -277,6 +277,7 @@ async function updateCart(userId, productId) {
       [userId, productId]
     );
   } catch (error) {
+    console.log(error)
     throw error;
   }
 }
