@@ -26,6 +26,7 @@ export async function loginUser(username, password) {
       password,
     });
     console.log(data);
+    localStorage.setItem("token", data.token);
     return data;
   } catch (error) {
     throw error;
@@ -39,6 +40,7 @@ export async function registerUser(username, password) {
       password,
     });
     console.log(data);
+    localStorage.setItem("token", data.token);
     return data;
   } catch (error) {
     throw error;
