@@ -102,12 +102,6 @@ async function createInitialReviews() {
   }
 }
 
-// const  = await createReview({
-//   productId: ,
-//   userId: ,
-//   review: "",
-// });
-
 async function createInitialProducts() {
   try {
     console.log("Starting to create products...");
@@ -447,12 +441,13 @@ async function seedTaxes() {
 async function createTables() {
   try {
     await client.query(`
-           CREATE TABLE users (
-            id SERIAL PRIMARY KEY,
-            username varchar UNIQUE NOT NULL,
-            password varchar NOT NULL,
-            seller varchar NOT NULL,
-            shoppingcart varchar
+        CREATE TABLE users (
+          id SERIAL PRIMARY KEY,
+          username varchar UNIQUE NOT NULL,
+          password varchar NOT NULL,
+          seller varchar NOT NULL,
+          email varchar NOT NULL,
+          shoppingcart varchar
         );
        CREATE TABLE products (
           id SERIAL PRIMARY KEY,
@@ -463,10 +458,10 @@ async function createTables() {
           image varchar
         );  
         CREATE TABLE reviews (
-            id SERIAL PRIMARY KEY,
-            "productId" SERIAL REFERENCES products (id),
-            "userId" SERIAL REFERENCES users (id),
-            review text NOT NULL
+          id SERIAL PRIMARY KEY,
+          "productId" SERIAL REFERENCES products (id),
+          "userId" SERIAL REFERENCES users (id),
+          review text NOT NULL
         );
         CREATE TABLE taxrates (
           id SERIAL PRIMARY KEY,
@@ -494,8 +489,8 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-      DROP TABLE IF EXISTS anonshoppingcart;
-      DROP TABLE IF EXISTS shoppingcart;
+    DROP TABLE IF EXISTS anonshoppingcart;
+    DROP TABLE IF EXISTS shoppingcart;
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS products;
@@ -512,30 +507,43 @@ async function dropTables() {
 async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
+    await new Promise((resolve, reject) => {
+      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
+        const arman = await createUser({
+          username: "arman",
+          password: hashedPassword,
+          email: "test1@yahoo.com",
+          seller: true,
+        });
+        console.log("arman", arman);
+      });
+      resolve();
+    });
 
-    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-      const arman = await createUser({
-        username: "arman",
-        password: hashedPassword,
-        seller: true,
+    await new Promise((resolve, reject) => {
+      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
+        const james = await createUser({
+          username: "james",
+          password: hashedPassword,
+          email: "test2@yahoo.com",
+          seller: true,
+        });
+        console.log(james);
       });
-      console.log(arman);
+      resolve();
     });
-    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-      const james = await createUser({
-        username: "james",
-        password: hashedPassword,
-        seller: true,
+
+    await new Promise((resolve, reject) => {
+      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
+        const robin = await createUser({
+          username: "robin",
+          password: hashedPassword,
+          email: "test3@yahoo.com",
+          seller: true,
+        });
+        console.log(robin);
       });
-      console.log(james);
-    });
-    bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-      const robin = await createUser({
-        username: "robin",
-        password: hashedPassword,
-        seller: true,
-      });
-      console.log(robin);
+      resolve();
     });
 
     console.log("Finished creating users!");
@@ -571,7 +579,7 @@ async function testDB() {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
-    await cartUpdate();
+    //await cartUpdate();
     const cart = await getCartbyUserId(1);
     await createInitialReviews();
     const userArman = await getUserByUsername("arman");
@@ -579,21 +587,21 @@ async function testDB() {
     const userRobin = await getUserByUsername("robin");
     await seedTaxes();
     const users = await getAllUsers();
-    console.log(users);
+    // console.log(users);
     const prod2 = await getProductsById(1);
-    console.log("Product 2", prod2);
+    // console.log("Product 2", prod2);
     const user2 = await getUsersByID(2);
-    console.log("User ID:", user2);
+    // console.log("User ID:", user2);
     const reviewed = await getReviewsByID(1);
-    console.log("review 1", reviewed);
+    // console.log("review 1", reviewed);
     const review = await getAllReviews();
-    console.log("reviews", review);
+    // console.log("reviews", review);
     const products = await getAllProducts();
-    console.log("line 104", products);
+    // console.log("line 104", products);
     const taxes = await getAllTaxes();
-    console.log("taxes", taxes);
+    // console.log("taxes", taxes);
     console.log("username", userArman, userJames, userRobin);
-    console.log(cart);
+    // console.log(cart);
   } catch (error) {
     console.error(error);
   } finally {
