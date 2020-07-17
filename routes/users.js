@@ -48,7 +48,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 usersRouter.post("/register", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
     const queriedUser = await getUserByUsername(username);
     if (queriedUser) {
       next({
@@ -65,8 +65,8 @@ usersRouter.post("/register", async (req, res, next) => {
         const user = await createUser({
           username,
           password: hashedPassword,
-          seller: true,
-          shoppingcart: "",
+          email,
+          seller: false,
         });
         if (err) {
           next(err);
