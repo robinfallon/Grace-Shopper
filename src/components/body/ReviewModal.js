@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function ReviewModal(review, setShow) {
+function ReviewModal({ reviews, setShow }) {
   return (
     <div className="reviewModal">
-      {review.map((singleReview) => {
-        return <span>{singleReview}</span>;
+      {reviews.map(([singleReview]) => {
+        return <span>{singleReview.review}</span>;
       })}
     </div>
   );

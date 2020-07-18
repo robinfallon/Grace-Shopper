@@ -508,6 +508,7 @@ async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
     await new Promise((resolve, reject) => {
+      console.log("here the user");
       bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
         const arman = await createUser({
           username: "arman",

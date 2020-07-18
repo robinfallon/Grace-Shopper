@@ -11,7 +11,7 @@ function SingleCard(props) {
   return (
     <>
       {reviewModal && (
-        <ReviewModal setReviewModal={setReviewModal} reviews={props.reviews} />
+        <ReviewModal setReviewModal={setReviewModal} reviews={props.review} />
       )}
       <div id="container">
         <div className="product-details">
@@ -30,9 +30,6 @@ function SingleCard(props) {
               <p>Add for ${props.price}</p>
             </a>
           </div>
-          {props.review.map((review) => {
-            return <span>{review.review}</span>;
-          })}
         </div>
 
         <div className="product-image">
