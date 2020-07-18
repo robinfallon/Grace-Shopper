@@ -33,7 +33,8 @@ function SearchResults({ searchInput }) {
             if (
               trimmedSearchInput === "" ||
               product.category.toLowerCase().includes(trimmedSearchInput) ||
-              product.itemname.toLowerCase().includes(trimmedSearchInput)
+              product.itemname.toLowerCase().includes(trimmedSearchInput) ||
+              product.description.toLowerCase().includes(trimmedSearchInput)
             )
               return true;
           })
