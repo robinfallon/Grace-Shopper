@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Header.css";
 import Modal from "./Modal";
 
-function Header() {
+function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -12,15 +12,17 @@ function Header() {
         <form method="get" action="">
           <div className="tb">
             <div className="td">
-              <input type="text" placeholder="Search Gracefully" required />
+              <input
+                value={searchInput}
+                onChange={(event) => {
+                  setSearchInput(event.target.value);
+                }}
+                type="text"
+                placeholder="Search Gracefully"
+                required
+              />
             </div>
-            <div className="td" id="s-cover">
-              <button type="submit" className="submit">
-                <div className="button__horizontal"></div>
-                <div className="button__vertical"></div>
-                <span>Find</span>
-              </button>
-            </div>
+            <div className="td" id="s-cover"></div>
           </div>
         </form>
         <button
