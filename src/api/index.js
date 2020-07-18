@@ -33,11 +33,12 @@ export async function loginUser(username, password) {
   }
 }
 
-export async function registerUser(username, password) {
+export async function registerUser(username, password, email) {
   try {
     const { data } = await axios.post("/api/users/register", {
       username,
       password,
+      email,
     });
     console.log(data);
     localStorage.setItem("token", data.token);
