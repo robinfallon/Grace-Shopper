@@ -281,6 +281,21 @@ async function updateCart(userId, productId) {
   }
 }
 
+async function destroyCart(userId, productId) {
+  try {
+    const { rows } = await client.query(
+      `
+      DELETE FROM shoppingcart("userId", "productId")
+      WHERE productId=${productId}
+      RETURNING *;
+      `
+    );
+    console.log(rows);
+  } catch ({ name, message }) {
+    console.log({ name, message });
+  }
+}
+
 async function getCartbyUserId(userId) {
   try {
     const { rows } = await client.query(

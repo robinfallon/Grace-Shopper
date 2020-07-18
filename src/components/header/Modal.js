@@ -30,14 +30,12 @@ function Modal({ setShowModal }) {
   };
 
   const cancelCourse = () => {
-    console.log("canceCourse Link 10 form.JS");
     setUser("");
     setPassword("");
     setConfirm("");
     setShowModal(false);
   };
 
-  //confused need help - signup keeps flipping around lol
   const handleRegis = (event) => {
     event.preventDefault();
     if (password === regispassword) {
