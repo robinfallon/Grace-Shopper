@@ -3,9 +3,15 @@ import ReviewModal from "./ReviewModal";
 import "./SingleCard.css";
 
 function SingleCard(props) {
+  // const [searchInput, setSearchInput] = useState("");
   console.log("props", props);
+<<<<<<< HEAD
   const [reviewModal, setReviewModal] = useState(false);
 
+=======
+  // const products = props;
+  // console.log(products);
+>>>>>>> 4a9c25b238dced750dabe0332685e6720f8b1408
   // const test = props.review.map()
   // console.log("test", test)
   return (
