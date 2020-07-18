@@ -2,7 +2,10 @@ import React from "react";
 import "./SingleCard.css";
 
 function SingleCard(props) {
+  // const [searchInput, setSearchInput] = useState("");
   console.log("props", props);
+  // const products = props;
+  // console.log(products);
   // const test = props.review.map()
   // console.log("test", test)
   return (

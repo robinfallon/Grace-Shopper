@@ -11,6 +11,7 @@ function Modal({ setShowModal }) {
   const [password, setPassword] = useState("");
   const [regispassword, setConfirm] = useState("");
   const [email, setEmail] = useState("");
+  const [showSignUp, setShowSignUp] = useState(false);
 
   const changeUser = (event) => {
     setUser(event.target.value);
@@ -33,6 +34,7 @@ function Modal({ setShowModal }) {
     setUser("");
     setPassword("");
     setConfirm("");
+    setShowModal(false);
   };
 
   //confused need help - signup keeps flipping around lol
@@ -72,7 +74,13 @@ function Modal({ setShowModal }) {
               className="sign-in"
               checked
             ></input>
-            <label for="tab-1" className="tab">
+            <label
+              for="tab-1"
+              className="tab"
+              onClick={() => {
+                setShowSignUp(false);
+              }}
+            >
               Sign In
             </label>
             <input
@@ -81,118 +89,127 @@ function Modal({ setShowModal }) {
               name="tab"
               className="sign-up"
             ></input>
-            <label for="tab-2" className="tab">
+            <label
+              for="tab-2"
+              className="tab"
+              onClick={() => {
+                setShowSignUp(true);
+              }}
+            >
               Sign Up
             </label>
             <div className="login-form">
-              <div className="sign-in-htm">
-                <div className="group">
-                  <label for="user" className="label">
-                    Username
-                  </label>
-                  <input
-                    id="user"
-                    type="text"
-                    className="input"
-                    onChange={changeUser}
-                  ></input>
+              {showSignUp ? (
+                <div className="sign-up-htm">
+                  <div className="group">
+                    <label for="user" className="label">
+                      Username
+                    </label>
+                    <input
+                      id="user"
+                      type="text"
+                      className="input"
+                      onChange={changeUser}
+                    ></input>
+                  </div>
+                  <div className="group">
+                    <label for="pass" className="label">
+                      Password
+                    </label>
+                    <input
+                      id="pass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      onChange={changePassword}
+                    ></input>
+                  </div>
+                  <div className="group">
+                    <label for="pass" className="label">
+                      Repeat Password
+                    </label>
+                    <input
+                      id="pass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      onChange={confirmPassword}
+                    ></input>
+                  </div>
+                  <div className="group">
+                    <label for="pass" className="label">
+                      Email Address
+                    </label>
+                    <input
+                      id="pass"
+                      type="text"
+                      className="input"
+                      onChange={changeEmail}
+                    ></input>
+                  </div>
+                  <div className="group">
+                    <input
+                      type="submit"
+                      className="button"
+                      value="Sign Up"
+                      onClick={handleRegis}
+                    ></input>
+                  </div>
+                  <div className="hr"></div>
+                  <div className="foot-lnk">
+                    <label for="tab-1">Already Member? </label>
+                  </div>
                 </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                    onChange={changePassword}
-                  ></input>{" "}
+              ) : (
+                <div className="sign-in-htm">
+                  <div className="group">
+                    <label for="user" className="label">
+                      Username
+                    </label>
+                    <input
+                      id="user"
+                      type="text"
+                      className="input"
+                      onChange={changeUser}
+                    ></input>
+                  </div>
+                  <div className="group">
+                    <label for="pass" className="label">
+                      Password
+                    </label>
+                    <input
+                      id="pass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      onChange={changePassword}
+                    ></input>{" "}
+                  </div>
+                  <div className="group">
+                    <input
+                      id="check"
+                      type="checkbox"
+                      className="check"
+                      checked
+                    ></input>
+                    <label for="check">
+                      <span className="icon"></span> Keep me Signed in
+                    </label>
+                  </div>
+                  <div className="group">
+                    <input
+                      type="submit"
+                      className="button"
+                      value="Sign In"
+                      onClick={handleSubmit}
+                    ></input>
+                  </div>
+                  <div className="hr"></div>
+                  <div className="foot-lnk">
+                    <a href="#forgot">Forgot Password?</a>
+                  </div>
                 </div>
-                <div className="group">
-                  <input
-                    id="check"
-                    type="checkbox"
-                    className="check"
-                    checked
-                  ></input>
-                  <label for="check">
-                    <span className="icon"></span> Keep me Signed in
-                  </label>
-                </div>
-                <div className="group">
-                  <input
-                    type="submit"
-                    className="button"
-                    value="Sign In"
-                    onClick={handleSubmit}
-                  ></input>
-                </div>
-                <div className="hr"></div>
-                <div className="foot-lnk">
-                  <a href="#forgot">Forgot Password?</a>
-                </div>
-              </div>
-              <div className="sign-up-htm">
-                <div className="group">
-                  <label for="user" className="label">
-                    Username
-                  </label>
-                  <input
-                    id="user"
-                    type="text"
-                    className="input"
-                    onChange={changeUser}
-                  ></input>
-                </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                    onChange={changePassword}
-                  ></input>
-                </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Repeat Password
-                  </label>
-                  <input
-                    id="pass"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                    onChange={confirmPassword}
-                  ></input>
-                </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Email Address
-                  </label>
-                  <input
-                    id="pass"
-                    type="text"
-                    className="input"
-                    onChange={changeEmail}
-                  ></input>
-                </div>
-                <div className="group">
-                  <input
-                    type="submit"
-                    className="button"
-                    value="Sign Up"
-                    onClick={handleRegis}
-                  ></input>
-                </div>
-                <div className="hr"></div>
-                <div className="foot-lnk">
-                  <label for="tab-1">Already Member? </label>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
