@@ -26,8 +26,4 @@ function ReviewModal(props) {
 //   return
 // }
 
-<<<<<<< HEAD
 export default ReviewModal;
-=======
-export default ReviewModal;
->>>>>>> d44e9d058af43cdbb659f70ff78d5c7ecc14c24e

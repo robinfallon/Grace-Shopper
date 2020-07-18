@@ -19,6 +19,7 @@ function createResult(productData) {
 
 function SearchResults() {
   const [myProducts, setMyProducts] = useState([]);
+  console.log(myProducts);
   useEffect(() => {
     getMyProducts().then(setMyProducts);
   }, []);
