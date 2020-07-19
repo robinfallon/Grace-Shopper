@@ -39,9 +39,9 @@ export async function createReview(id, itemname) {
 }
 
 // not sure if these params are correct:
-export async function destroyReview(id, itemname) {
+export async function destroyReview(id) {
     try {
-      const { data } = await axios.delete('/:reviewId', {id, itemname});
+      const { data } = await axios.delete('/:reviewId', {id});
       return data;
     } catch (error) {
       throw error;

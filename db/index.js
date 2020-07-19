@@ -183,7 +183,7 @@ async function getUsersByID(id) {
   try {
     const { rows } = await client.query(
       `
-    SELECT username, seller, shoppingcart
+    SELECT *
     FROM users
     WHERE id=$1
     `,
@@ -360,4 +360,5 @@ module.exports = {
   getUser,
   updateCart,
   getCartbyUserId,
+  destroyCart
 };
