@@ -29,7 +29,7 @@ function Header() {
             setShowModal(!showModal);
           }}
         >
-          Log in or Sign up!
+          Log in/Sign up!
         </button>
         <button className="thecartbtn">
           <a href="/cart">cart</a>
