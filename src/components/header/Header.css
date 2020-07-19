@@ -3,15 +3,15 @@
 .header {
   margin: 10px 10px 10px 10px;
   display: grid;
-  grid-template-columns: 2fr 2fr 1.05fr 1fr;
+  grid-template-columns: 2fr 2fr 1.5fr 0.5fr;
   background-image: linear-gradient(
     to right,
     rgb(224, 46, 46),
     rgb(224, 46, 46),
     rgb(255, 233, 136)
   );
-  padding-top: 30px;
-  padding-bottom: 60px;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 @media (max-width: 1350px) {
@@ -19,6 +19,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .rose {
+    font-size: 2rem;
+    padding-top: 42px;
+    text-align: center;
+    margin-left: -50px;
+    height: 15vh;
+    line-height: 5vh;
+    color: #fcedd8;
+    /* background: #d52e3f; */
+    font-family: "Niconne", cursive;
+    font-weight: 900;
+    text-shadow: 5px 5px 0px #eb452b, 10px 10px 0px #efa032,
+      15px 15px 0px #46b59b, 20px 20px 0px #017e7f, 25px 25px 0px #052939,
+      30px 30px 0px #c11a2b, 35px 35px 0px #c11a2b, 40px 40px 0px #c11a2b,
+      45px 45px 0px #c11a2b;
   }
 }
 
@@ -102,7 +119,7 @@ button {
 
   display: block;
   width: 80px;
-  height: 66px;
+  height: 50px;
   cursor: pointer;
   border-radius: 4px;
 }
