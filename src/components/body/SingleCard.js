@@ -5,7 +5,7 @@ import {addToCart, removeFromCart} from "../../api/Cart"
 
 function SingleCard(props) {
   // const [searchInput, setSearchInput] = useState("");
-  console.log("props", props);
+  // console.log("props", props);
   const [reviewModal, setReviewModal] = useState(false);
 
   // const test = props.review.map()

@@ -247,27 +247,7 @@ async function updateReview({ productId, userId, reviews }) {
   }
 }
 
-async function updateReview(productId, fields = {}) {
-  const setString = Object.keys(fields)
-    .map((key, index) => `"${key}"=$${index + 1}`)
-    .join(", ");
-  try {
-    if (setString.length > 0) {
-      const { rows } = await client.query(
-        `
-        UPDATE reviews
-        SET ${setString}
-        WHERE id=${productId}
-        RETURNING *;
-      `,
-        Object.values(fields)
-      );
-      return rows;
-    }
-  } catch (error) {
-    throw error;
-  }
-}
+
 
 async function updateCart(userId, productId) {
   try {
