@@ -13,8 +13,10 @@ usersRouter.get("/", async (req, res, next) => {
     next({ name, message });
   }
 });
+
 usersRouter.get("/getUserInfo", async (req, res, next) => {
   try {
+    console.log(req.user);
     // const singleUser = await getUserByUsername(req.user);
     if (req.user) {
       res.send({ user: req.user });

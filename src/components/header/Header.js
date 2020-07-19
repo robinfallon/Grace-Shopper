@@ -9,7 +9,7 @@ function Header({ searchInput, setSearchInput }) {
   console.log("USER!!!!", user);
   useEffect(() => {
     getUserInfo().then(setUser);
-  }, []);
+  }, [localStorage, showModal]);
 
   return (
     <>

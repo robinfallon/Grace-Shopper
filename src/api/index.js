@@ -52,7 +52,7 @@ export async function getUserInfo() {
   try {
     const user = await axios.get("/api/users/getUserInfo", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return user;
