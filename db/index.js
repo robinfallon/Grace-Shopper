@@ -281,12 +281,12 @@ async function updateCart(userId, productId) {
   }
 }
 
-async function destroyCart(cartId) {
+async function destroyCart(userId, productId) {
   try {
     const { rows } = await client.query(
       `
-      DELETE FROM shoppingcart
-      WHERE id=${cartId}
+      DELETE FROM shoppingcart("userId", "productId")
+      WHERE productId=${productId}
       RETURNING *;
       `
     );

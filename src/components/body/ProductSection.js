@@ -7,7 +7,7 @@ function createResult(productData) {
   return (
     <SingleCard
       key={productData.id}
-      id={productData.itemname} //instead of {productData.id}
+      id={productData.itemname} //instead of {productData.id}?
       itemname={productData.itemname}
       description={productData.description}
       price={productData.price}
@@ -18,7 +18,7 @@ function createResult(productData) {
   );
 }
 
-function SearchResults() {
+function SearchResults({ searchInput }) {
   const [myProducts, setMyProducts] = useState([]);
   console.log(myProducts);
   useEffect(() => {
@@ -26,7 +26,21 @@ function SearchResults() {
   }, []);
   return (
     <div className="resultArea">
-      <dl className="productMap">{myProducts.map(createResult)}</dl>
+      <dl className="productMap">
+        {myProducts
+          .filter((product) => {
+            console.log("line 31", product, searchInput);
+            const trimmedSearchInput = searchInput.toLowerCase();
+            if (
+              trimmedSearchInput === "" ||
+              product.category.toLowerCase().includes(trimmedSearchInput) ||
+              product.itemname.toLowerCase().includes(trimmedSearchInput) ||
+              product.description.toLowerCase().includes(trimmedSearchInput)
+            )
+              return true;
+          })
+          .map(createResult)}
+      </dl>
     </div>
   );
 }

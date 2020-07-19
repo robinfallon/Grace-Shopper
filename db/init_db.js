@@ -489,8 +489,8 @@ async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-    DROP TABLE IF EXISTS anonshoppingcart;
-    DROP TABLE IF EXISTS shoppingcart;
+      DROP TABLE IF EXISTS anonshoppingcart;
+      DROP TABLE IF EXISTS shoppingcart;
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS products;
@@ -508,6 +508,7 @@ async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
     await new Promise((resolve, reject) => {
+      console.log("here the user");
       bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
         const arman = await createUser({
           username: "arman",

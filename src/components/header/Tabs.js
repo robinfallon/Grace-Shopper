@@ -1,13 +1,37 @@
 import React from "react";
 import "./Tabs.css";
-function Tabs() {
+function Tabs({ setSearchInput }) {
   return (
     <div className="tabs">
-      <button className="big-button">Computers</button>
-      <button className="big-button">Phones</button>
-      <button className="big-button">Tablets</button>
-      <button className="big-button">Cameras</button>
-      <button className="big-button">Lenses</button>
+      <button
+        className="big-button"
+        name="computer"
+        onClick={(event) => setSearchInput(event.target.name)}
+      >
+        Computers
+      </button>
+      <button
+        className="big-button"
+        name="Phones"
+        onClick={(event) => setSearchInput(event.target.name)}
+      >
+        Phones
+      </button>
+      <button
+        className="big-button"
+        name="tablet"
+        onClick={(event) => setSearchInput(event.target.name)}
+      >
+        Tablets
+      </button>
+      <button
+        className="big-button"
+        name="cameras"
+        onClick={(event) => setSearchInput(event.target.name)}
+      >
+        Cameras
+      </button>
+      {/* <button className="big-button">Lenses</button> */}
     </div>
   );
 }
