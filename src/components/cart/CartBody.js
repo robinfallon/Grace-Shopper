@@ -1,5 +1,7 @@
 import React from "react";
 import "./CartBody.css";
+import ItemInCart from "./ItemInCart";
+import CheckOut from "./CheckOut";
 
 function CartBody() {
   return (
@@ -43,6 +45,7 @@ function CartBody() {
             </div>
           </div>
         </div>
+        <CheckOut />
       </div>
     </div>
   );
