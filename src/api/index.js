@@ -47,3 +47,16 @@ export async function registerUser(username, password, email) {
     throw error;
   }
 }
+
+export async function getUserInfo() {
+  try {
+    const user = await axios.get("/api/users/getUserInfo", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    });
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}

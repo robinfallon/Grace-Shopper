@@ -327,24 +327,6 @@ async function getUser({ username, password }) {
   }
 }
 
-async function getUserByUsername(userName) {
-  try {
-    const { rows } = await client.query(
-      `
-      SELECT *
-      FROM users
-      WHERE username = $1;
-    `,
-      [userName]
-    );
-    if (!rows || !rows.length) return null;
-    const [user] = rows;
-    return user;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 async function destroyReview(id) {
   try {
     console.log(id, "id");
