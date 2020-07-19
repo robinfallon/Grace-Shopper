@@ -220,219 +220,219 @@ async function createInitialProducts() {
 //   image: '',
 // });
 
-async function seedTaxes() {
-  try {
-    console.log("Creating Tax rates");
+// async function seedTaxes() {
+//   try {
+//     console.log("Creating Tax rates");
 
-    const state1 = await createTaxRate({
-      state: "Alabama",
-      rate: 9.22,
-    });
-    const state2 = await createTaxRate({
-      state: "Alaska",
-      rate: 1.76,
-    });
-    const state3 = await createTaxRate({
-      state: "Arizona",
-      rate: 8.4,
-    });
-    const state4 = await createTaxRate({
-      state: "Arkansas",
-      rate: 9.47,
-    });
-    const state5 = await createTaxRate({
-      state: "California",
-      rate: 8.66,
-    });
-    const state6 = await createTaxRate({
-      state: "Colorado",
-      rate: 7.65,
-    });
-    const state7 = await createTaxRate({
-      state: "Connecticut",
-      rate: 6.35,
-    });
-    const state8 = await createTaxRate({
-      state: "Washington D.C.",
-      rate: 6.0,
-    });
-    const state9 = await createTaxRate({
-      state: "Delaware",
-      rate: 0,
-    });
-    const state10 = await createTaxRate({
-      state: "Florida",
-      rate: 7.05,
-    });
-    const state11 = await createTaxRate({
-      state: "Georgia",
-      rate: 7.31,
-    });
-    const state12 = await createTaxRate({
-      state: "Hawaii",
-      rate: 4.44,
-    });
-    const state13 = await createTaxRate({
-      state: "Idaho",
-      rate: 6.03,
-    });
-    const state14 = await createTaxRate({
-      state: "Illinois",
-      rate: 9.08,
-    });
-    const state15 = await createTaxRate({
-      state: "Indiana",
-      rate: 7,
-    });
-    const state16 = await createTaxRate({
-      state: "Iowa",
-      rate: 6.94,
-    });
-    const state17 = await createTaxRate({
-      state: "Kansas",
-      rate: 8.68,
-    });
-    const state18 = await createTaxRate({
-      state: "Kentucky",
-      rate: 6,
-    });
-    const state19 = await createTaxRate({
-      state: "Louisiana",
-      rate: 9.52,
-    });
-    const state20 = await createTaxRate({
-      state: "Maine",
-      rate: 5.5,
-    });
-    const state21 = await createTaxRate({
-      state: "Massachusetts",
-      rate: 6.25,
-    });
-    const state22 = await createTaxRate({
-      state: "Maryland",
-      rate: 6,
-    });
-    const state23 = await createTaxRate({
-      state: "Michigan",
-      rate: 6,
-    });
-    const state24 = await createTaxRate({
-      state: "Minnesota",
-      rate: 7.46,
-    });
-    const state25 = await createTaxRate({
-      state: "Mississippi",
-      rate: 7.07,
-    });
-    const state26 = await createTaxRate({
-      state: "Missouri",
-      rate: 8.18,
-    });
-    const state27 = await createTaxRate({
-      state: "Montana",
-      rate: 0,
-    });
-    const state28 = await createTaxRate({
-      state: "North Carolina",
-      rate: 6.97,
-    });
-    const state29 = await createTaxRate({
-      state: "North Dakota",
-      rate: 6.86,
-    });
-    const state30 = await createTaxRate({
-      state: "New Hampshire",
-      rate: 0,
-    });
-    const state31 = await createTaxRate({
-      state: "New Jersey",
-      rate: 6.6,
-    });
-    const state32 = await createTaxRate({
-      state: "New Mexico",
-      rate: 7.82,
-    });
-    const state33 = await createTaxRate({
-      state: "New York",
-      rate: 8.52,
-    });
-    const state34 = await createTaxRate({
-      state: "Nebraska",
-      rate: 6.93,
-    });
-    const state35 = await createTaxRate({
-      state: "Nevada",
-      rate: 8.32,
-    });
-    const state36 = await createTaxRate({
-      state: "Ohio",
-      rate: 7.17,
-    });
-    const state37 = await createTaxRate({
-      state: "Oklahoma",
-      rate: 8.94,
-    });
-    const state38 = await createTaxRate({
-      state: "Oregon",
-      rate: 0,
-    });
-    const state39 = await createTaxRate({
-      state: "Pennsylvania",
-      rate: 6.34,
-    });
-    const state40 = await createTaxRate({
-      state: "Rhode Island",
-      rate: 7,
-    });
-    const state41 = await createTaxRate({
-      state: "South Carolina",
-      rate: 7.46,
-    });
-    const state42 = await createTaxRate({
-      state: "South Dakota",
-      rate: 6.4,
-    });
-    const state43 = await createTaxRate({
-      state: "Tennessee",
-      rate: 9.53,
-    });
-    const state44 = await createTaxRate({
-      state: "Texas",
-      rate: 8.19,
-    });
-    const state45 = await createTaxRate({
-      state: "Utah",
-      rate: 7.18,
-    });
-    const state46 = await createTaxRate({
-      state: "Virginia",
-      rate: 5.65,
-    });
-    const state47 = await createTaxRate({
-      state: "Vermont",
-      rate: 6.22,
-    });
-    const state48 = await createTaxRate({
-      state: "West Virginia",
-      rate: 6.41,
-    });
-    const state49 = await createTaxRate({
-      state: "Washington",
-      rate: 9.21,
-    });
-    const state50 = await createTaxRate({
-      state: "Wisconsin",
-      rate: 5.46,
-    });
-    const state51 = await createTaxRate({
-      state: "Wyoming",
-      rate: 5.34,
-    });
-  } catch (error) {
-    console.error("Error creating users!");
-    throw error;
-  }
-}
+//     const state1 = await createTaxRate({
+//       state: "Alabama",
+//       rate: 9.22,
+//     });
+//     const state2 = await createTaxRate({
+//       state: "Alaska",
+//       rate: 1.76,
+//     });
+//     const state3 = await createTaxRate({
+//       state: "Arizona",
+//       rate: 8.4,
+//     });
+//     const state4 = await createTaxRate({
+//       state: "Arkansas",
+//       rate: 9.47,
+//     });
+//     const state5 = await createTaxRate({
+//       state: "California",
+//       rate: 8.66,
+//     });
+//     const state6 = await createTaxRate({
+//       state: "Colorado",
+//       rate: 7.65,
+//     });
+//     const state7 = await createTaxRate({
+//       state: "Connecticut",
+//       rate: 6.35,
+//     });
+//     const state8 = await createTaxRate({
+//       state: "Washington D.C.",
+//       rate: 6.0,
+//     });
+//     const state9 = await createTaxRate({
+//       state: "Delaware",
+//       rate: 0,
+//     });
+//     const state10 = await createTaxRate({
+//       state: "Florida",
+//       rate: 7.05,
+//     });
+//     const state11 = await createTaxRate({
+//       state: "Georgia",
+//       rate: 7.31,
+//     });
+//     const state12 = await createTaxRate({
+//       state: "Hawaii",
+//       rate: 4.44,
+//     });
+//     const state13 = await createTaxRate({
+//       state: "Idaho",
+//       rate: 6.03,
+//     });
+//     const state14 = await createTaxRate({
+//       state: "Illinois",
+//       rate: 9.08,
+//     });
+//     const state15 = await createTaxRate({
+//       state: "Indiana",
+//       rate: 7,
+//     });
+//     const state16 = await createTaxRate({
+//       state: "Iowa",
+//       rate: 6.94,
+//     });
+//     const state17 = await createTaxRate({
+//       state: "Kansas",
+//       rate: 8.68,
+//     });
+//     const state18 = await createTaxRate({
+//       state: "Kentucky",
+//       rate: 6,
+//     });
+//     const state19 = await createTaxRate({
+//       state: "Louisiana",
+//       rate: 9.52,
+//     });
+//     const state20 = await createTaxRate({
+//       state: "Maine",
+//       rate: 5.5,
+//     });
+//     const state21 = await createTaxRate({
+//       state: "Massachusetts",
+//       rate: 6.25,
+//     });
+//     const state22 = await createTaxRate({
+//       state: "Maryland",
+//       rate: 6,
+//     });
+//     const state23 = await createTaxRate({
+//       state: "Michigan",
+//       rate: 6,
+//     });
+//     const state24 = await createTaxRate({
+//       state: "Minnesota",
+//       rate: 7.46,
+//     });
+//     const state25 = await createTaxRate({
+//       state: "Mississippi",
+//       rate: 7.07,
+//     });
+//     const state26 = await createTaxRate({
+//       state: "Missouri",
+//       rate: 8.18,
+//     });
+//     const state27 = await createTaxRate({
+//       state: "Montana",
+//       rate: 0,
+//     });
+//     const state28 = await createTaxRate({
+//       state: "North Carolina",
+//       rate: 6.97,
+//     });
+//     const state29 = await createTaxRate({
+//       state: "North Dakota",
+//       rate: 6.86,
+//     });
+//     const state30 = await createTaxRate({
+//       state: "New Hampshire",
+//       rate: 0,
+//     });
+//     const state31 = await createTaxRate({
+//       state: "New Jersey",
+//       rate: 6.6,
+//     });
+//     const state32 = await createTaxRate({
+//       state: "New Mexico",
+//       rate: 7.82,
+//     });
+//     const state33 = await createTaxRate({
+//       state: "New York",
+//       rate: 8.52,
+//     });
+//     const state34 = await createTaxRate({
+//       state: "Nebraska",
+//       rate: 6.93,
+//     });
+//     const state35 = await createTaxRate({
+//       state: "Nevada",
+//       rate: 8.32,
+//     });
+//     const state36 = await createTaxRate({
+//       state: "Ohio",
+//       rate: 7.17,
+//     });
+//     const state37 = await createTaxRate({
+//       state: "Oklahoma",
+//       rate: 8.94,
+//     });
+//     const state38 = await createTaxRate({
+//       state: "Oregon",
+//       rate: 0,
+//     });
+//     const state39 = await createTaxRate({
+//       state: "Pennsylvania",
+//       rate: 6.34,
+//     });
+//     const state40 = await createTaxRate({
+//       state: "Rhode Island",
+//       rate: 7,
+//     });
+//     const state41 = await createTaxRate({
+//       state: "South Carolina",
+//       rate: 7.46,
+//     });
+//     const state42 = await createTaxRate({
+//       state: "South Dakota",
+//       rate: 6.4,
+//     });
+//     const state43 = await createTaxRate({
+//       state: "Tennessee",
+//       rate: 9.53,
+//     });
+//     const state44 = await createTaxRate({
+//       state: "Texas",
+//       rate: 8.19,
+//     });
+//     const state45 = await createTaxRate({
+//       state: "Utah",
+//       rate: 7.18,
+//     });
+//     const state46 = await createTaxRate({
+//       state: "Virginia",
+//       rate: 5.65,
+//     });
+//     const state47 = await createTaxRate({
+//       state: "Vermont",
+//       rate: 6.22,
+//     });
+//     const state48 = await createTaxRate({
+//       state: "West Virginia",
+//       rate: 6.41,
+//     });
+//     const state49 = await createTaxRate({
+//       state: "Washington",
+//       rate: 9.21,
+//     });
+//     const state50 = await createTaxRate({
+//       state: "Wisconsin",
+//       rate: 5.46,
+//     });
+//     const state51 = await createTaxRate({
+//       state: "Wyoming",
+//       rate: 5.34,
+//     });
+//   } catch (error) {
+//     console.error("Error creating users!");
+//     throw error;
+//   }
+// }
 // const state = await createTaxRate({
 //   state: '',
 //   rate: ,
@@ -586,7 +586,7 @@ async function testDB() {
     const userArman = await getUserByUsername("arman");
     const userJames = await getUserByUsername("james");
     const userRobin = await getUserByUsername("robin");
-    await seedTaxes();
+    // await seedTaxes();
     const users = await getAllUsers();
     // console.log(users);
     const prod2 = await getProductsById(1);
