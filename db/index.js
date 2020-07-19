@@ -183,7 +183,7 @@ async function getUsersByID(id) {
   try {
     const { rows } = await client.query(
       `
-    SELECT username, seller, shoppingcart
+    SELECT *
     FROM users
     WHERE id=$1
     `,
@@ -281,6 +281,21 @@ async function updateCart(userId, productId) {
   }
 }
 
+async function destroyCart(cartId) {
+  try {
+    const { rows } = await client.query(
+      `
+      DELETE FROM shoppingcart
+      WHERE id=${cartId}
+      RETURNING *;
+      `
+    );
+    console.log(rows);
+  } catch ({ name, message }) {
+    console.log({ name, message });
+  }
+}
+
 async function getCartbyUserId(userId) {
   try {
     const { rows } = await client.query(
@@ -363,4 +378,5 @@ module.exports = {
   getUser,
   updateCart,
   getCartbyUserId,
+  destroyCart
 };

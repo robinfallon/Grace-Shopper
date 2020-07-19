@@ -1,5 +1,6 @@
 import React from "react";
 import "./SingleCard.css";
+import {addToCart, removeFromCart} from "../../api/Cart"
 
 function SingleCard(props) {
   // const [searchInput, setSearchInput] = useState("");
@@ -8,6 +9,8 @@ function SingleCard(props) {
   // console.log(products);
   // const test = props.review.map()
   // console.log("test", test)
+console.log(props)
+
   return (
     <div id="container">
       <div className="product-details">
@@ -18,6 +21,13 @@ function SingleCard(props) {
           <button className="review" onClick={console.log()}>
             Reviews
           </button>
+          <br></br>
+          <button id="addToCart" onClick={() => {addToCart(
+                          props.id, 
+                        )}}>Add to Cart</button>
+          <button id="removeFromCart" onClick={() => {removeFromCart(
+                            props.id,
+                        )}}>Remove from Cart</button>
           <a class="bt more-bt">
             <span class="fl"></span>
             <span class="sfl"></span>
