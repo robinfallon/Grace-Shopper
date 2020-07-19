@@ -190,9 +190,6 @@ function Modal({ setShowModal }) {
                       className="check"
                       checked
                     ></input>
-                    <label for="check">
-                      <span className="icon"></span> Keep me Signed in
-                    </label>
                   </div>
                   <div className="group">
                     <input
@@ -204,7 +201,7 @@ function Modal({ setShowModal }) {
                   </div>
                   <div className="hr"></div>
                   <div className="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
+                    
                   </div>
                 </div>
               )}

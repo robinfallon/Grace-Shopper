@@ -12,7 +12,7 @@ export async function getSomething() {
 export async function getMyProducts() {
   try {
     const myProducts = await axios.get("/api/products");
-    console.log("My products are", myProducts);
+    // console.log("My products are", myProducts);
     return myProducts.data.allProducts;
   } catch (error) {
     throw error;
