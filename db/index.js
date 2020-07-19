@@ -358,4 +358,5 @@ module.exports = {
   getUser,
   updateCart,
   getCartbyUserId,
+  destroyCart
 };
