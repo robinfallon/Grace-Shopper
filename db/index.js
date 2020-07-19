@@ -25,7 +25,7 @@ async function getUserByUsername(userName) {
     console.log("firing");
     const { rows } = await client.query(
       `
-      SELECT username
+      SELECT *
       FROM users
       WHERE username = $1;
     `,
@@ -47,9 +47,10 @@ async function getUser({ username, password }) {
 
   try {
     const user = await getUserByUsername(username);
+    console.log(user);
     if (!user) return;
     console.log("user.password", user.password);
-    const matchingPassword = bcrypt.compareSync(password, user.password);
+    const matchingPassword = await bcrypt.compareSync(password, user.password);
     if (!matchingPassword) return;
     return user;
   } catch (error) {
@@ -181,15 +182,18 @@ async function createTaxRate({ state, rate }) {
 
 async function getUsersByID(id) {
   try {
-    const { rows } = await client.query(
+    const {
+      rows: [user],
+    } = await client.query(
       `
     SELECT *
     FROM users
-    WHERE id=$1
+    WHERE id=$1;
     `,
       [id]
     );
-    return rows;
+    console.log("rows", rows);
+    return user;
   } catch (error) {
     throw error;
   }
@@ -312,39 +316,6 @@ async function getCartbyUserId(userId) {
   }
 }
 
-async function getUser({ username, password }) {
-  if (!username || !password) {
-    return;
-  }
-  try {
-    const user = await getUserByUsername(username);
-    if (!user) return;
-    const matchingPassword = bcrypt.compareSync(password, user.password);
-    if (!matchingPassword) return;
-    return user;
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function getUserByUsername(userName) {
-  try {
-    const { rows } = await client.query(
-      `
-      SELECT *
-      FROM users
-      WHERE username = $1;
-    `,
-      [userName]
-    );
-    if (!rows || !rows.length) return null;
-    const [user] = rows;
-    return user;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 async function destroyReview(id) {
   try {
     console.log(id, "id");
@@ -378,5 +349,5 @@ module.exports = {
   getUser,
   updateCart,
   getCartbyUserId,
-  destroyCart
+  destroyCart,
 };

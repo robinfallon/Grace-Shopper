@@ -1,7 +1,7 @@
 const apiRouter = require("express").Router();
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const { getUserById } = require('../db');
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
+const { getUsersByID } = require("../db");
 const { JWT_SECRET } = process.env;
 
 apiRouter.get("/", (req, res, next) => {
@@ -11,20 +11,25 @@ apiRouter.get("/", (req, res, next) => {
 });
 
 apiRouter.use(async (req, res, next) => {
-  const prefix = 'Bearer ';
-  const auth = req.header('Authorization');
-  
-  if (!auth) { // nothing to see here
+  const prefix = "Bearer ";
+  const auth = req.header("Authorization");
+
+  if (!auth) {
+    // nothing to see here
     next();
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
-    
+
     try {
       const parsedToken = jwt.verify(token, JWT_SECRET);
-      
-      const id = parsedToken && parsedToken.id
+      console.log("parsed", parsedToken);
+
+      const id = parsedToken && parsedToken.id;
+      console.log(id);
+      console.log(getUsersByID);
       if (id) {
         req.user = await getUsersByID(id);
+        console.log(req.user);
         next();
       }
     } catch (error) {
@@ -32,8 +37,8 @@ apiRouter.use(async (req, res, next) => {
     }
   } else {
     next({
-      name: 'AuthorizationHeaderError',
-      message: `Authorization token must start with ${ prefix }`
+      name: "AuthorizationHeaderError",
+      message: `Authorization token must start with ${prefix}`,
     });
   }
 });
@@ -54,8 +59,7 @@ const cartRouter = require("./shoppingcart");
 apiRouter.use("/cart", cartRouter);
 
 apiRouter.use((err, req, res, next) => {
-  res.send(err)
-})
+  res.send(err);
+});
 
 module.exports = apiRouter;
-                       
