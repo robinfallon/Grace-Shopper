@@ -1,4 +1,7 @@
-.greeting {
-  font-size: 30px;
-  min-height: 100vh;
+.paymentOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -30px;
+  margin-bottom: 20px;
 }

@@ -192,7 +192,7 @@ async function getUsersByID(id) {
     `,
       [id]
     );
-    console.log("rows", rows);
+    console.log("user", user);
     return user;
   } catch (error) {
     throw error;
