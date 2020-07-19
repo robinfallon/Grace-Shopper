@@ -14,6 +14,18 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
+usersRouter.get("/getUserInfo", async (req, res, next) => {
+  try {
+    console.log(req.user);
+    // const singleUser = await getUserByUsername(req.user);
+    if (req.user) {
+      res.send({ user: req.user });
+    }
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
 usersRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   console.log(req.body);

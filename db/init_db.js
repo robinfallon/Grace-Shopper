@@ -517,8 +517,8 @@ async function createInitialUsers() {
           seller: true,
         });
         console.log("arman", arman);
+        resolve();
       });
-      resolve();
     });
 
     await new Promise((resolve, reject) => {
@@ -530,8 +530,8 @@ async function createInitialUsers() {
           seller: true,
         });
         console.log(james);
+        resolve();
       });
-      resolve();
     });
 
     await new Promise((resolve, reject) => {
@@ -543,8 +543,8 @@ async function createInitialUsers() {
           seller: true,
         });
         console.log(robin);
+        resolve();
       });
-      resolve();
     });
 
     console.log("Finished creating users!");
