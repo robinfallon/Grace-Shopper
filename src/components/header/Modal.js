@@ -50,9 +50,9 @@ function Modal({ setShowModal, setUser }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUser(username, password).then(() => {
-      setUser(username)
+      setUser(username);
       cancelCourse();
-    })
+    });
   };
 
   return (
@@ -201,9 +201,7 @@ function Modal({ setShowModal, setUser }) {
                     ></input>
                   </div>
                   <div className="hr"></div>
-                  <div className="foot-lnk">
-                    
-                  </div>
+                  <div className="foot-lnk"></div>
                 </div>
               )}
             </div>
