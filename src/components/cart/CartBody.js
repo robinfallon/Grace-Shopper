@@ -1,9 +1,10 @@
 import React from "react";
 import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
-import CheckOut from "./CheckOut";
+import CheckOut from "./CheckOut"
 
 function CartBody() {
+
   return (
     <div className="cartBodySection">
       <div className="container">
@@ -50,5 +51,6 @@ function CartBody() {
     </div>
   );
 }
+
 
 export default CartBody;
