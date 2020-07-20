@@ -2,19 +2,15 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { loginUser, registerUser } from "../../api/index";
 
-function helloWorld() {
-  console.log("hello, world");
-}
-
-function Modal({ setShowModal }) {
-  const [username, setUser] = useState("");
+function Modal({ setShowModal, setUser }) {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [regispassword, setConfirm] = useState("");
   const [email, setEmail] = useState("");
   const [showSignUp, setShowSignUp] = useState(false);
 
   const changeUser = (event) => {
-    setUser(event.target.value);
+    setUsername(event.target.value);
   };
 
   const changeEmail = (event) => {
@@ -30,7 +26,7 @@ function Modal({ setShowModal }) {
   };
 
   const cancelCourse = () => {
-    setUser("");
+    setUsername("");
     setPassword("");
     setConfirm("");
     setShowModal(false);
@@ -49,7 +45,8 @@ function Modal({ setShowModal }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginUser(username, password).then(() => {
+    loginUser(username, password).then((user) => {
+      setUser(user);
       cancelCourse();
     });
   };

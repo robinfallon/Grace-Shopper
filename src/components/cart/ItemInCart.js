@@ -5,7 +5,7 @@ function ItemInCart(props) {
     <div className="layout-inline row">
       <div className="col col-pro layout-inline">
         <img src={props.image} alt="/" />
-        <p>{props.title}</p>
+        <p>{props.itemname}</p>
       </div>
 
       <div className="col col-price col-numeric align-center ">

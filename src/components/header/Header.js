@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import Modal from "./Modal";
-import { getUserInfo } from "../../api/index";
 
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState({});
-  console.log("USER!!!!", user);
-  useEffect(() => {
-    getUserInfo().then(setUser);
-  }, [localStorage, showModal]);
+
+  const [user, setUser] = useState("");
+  console.log(user.token, "look at me");
 
   return (
     <>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && <Modal setShowModal={setShowModal} setUser={setUser} />}
       <div className="header">
         <div className="rose">Grace Shopper</div>
         <form method="get" action="">
@@ -33,7 +30,7 @@ function Header({ searchInput, setSearchInput }) {
           </div>
         </form>
         {user.id ? (
-          <button>Hello!</button>
+          <button>Hello {user}!</button>
         ) : (
           <button
             className="account"
