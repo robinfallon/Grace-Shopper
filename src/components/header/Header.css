@@ -39,6 +39,8 @@
   }
 }
 
+
+
 .header:hover {
   /* padding-top: 2em; */
   /* padding-bottom: 2em; */
@@ -70,7 +72,7 @@
 }
 
 .rose {
-  font-size: 4rem;
+  font-size: 4em;
   padding-top: 42px;
   text-align: center;
   margin-left: -50px;

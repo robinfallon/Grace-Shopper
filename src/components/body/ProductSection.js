@@ -20,7 +20,7 @@ function createResult(productData) {
 
 function SearchResults({ searchInput }) {
   const [myProducts, setMyProducts] = useState([]);
-  console.log(myProducts);
+  // console.log(myProducts);
   useEffect(() => {
     getMyProducts().then(setMyProducts);
   }, []);
@@ -29,7 +29,7 @@ function SearchResults({ searchInput }) {
       <dl className="productMap">
         {myProducts
           .filter((product) => {
-            console.log("line 31", product, searchInput);
+            // console.log("line 31", product, searchInput);
             const trimmedSearchInput = searchInput.toLowerCase();
             if (
               trimmedSearchInput === "" ||

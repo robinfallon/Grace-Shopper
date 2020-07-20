@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { loginUser, registerUser } from "../../api/index";
 
+<<<<<<< HEAD
+=======
+function helloWorld() {
+  console.log("hello, world");
+}
+
+>>>>>>> 5a863bef814975cab16239a5e49a9d563a7ef738
 function Modal({ setShowModal, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -45,10 +52,15 @@ function Modal({ setShowModal, setUser }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     loginUser(username, password).then((user) => {
       setUser(user);
+=======
+    loginUser(username, password).then(() => {
+      setUser(username)
+>>>>>>> 5a863bef814975cab16239a5e49a9d563a7ef738
       cancelCourse();
-    });
+    })
   };
 
   return (
@@ -187,9 +199,6 @@ function Modal({ setShowModal, setUser }) {
                       className="check"
                       checked
                     ></input>
-                    <label for="check">
-                      <span className="icon"></span> Keep me Signed in
-                    </label>
                   </div>
                   <div className="group">
                     <input
@@ -201,7 +210,7 @@ function Modal({ setShowModal, setUser }) {
                   </div>
                   <div className="hr"></div>
                   <div className="foot-lnk">
-                    <a href="#forgot">Forgot Password?</a>
+                    
                   </div>
                 </div>
               )}
