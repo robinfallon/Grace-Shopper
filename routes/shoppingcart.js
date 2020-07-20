@@ -13,8 +13,8 @@ cartRouter.get("/", async (req, res, next) => {
         const {id} = req.user
       const cartItems = await getCartbyUserId(id);
       res.send({ cartItems });
-    } catch ({ name, message }) {
-      ({ name, message });
+    } catch (err) {
+      next(err);
     }
 });
 
@@ -23,8 +23,8 @@ cartRouter.post("/", async (req, res, next) => {
         const {userId, productId} = req.body
       const cartItems = await updateCart(userId, productId);
       res.send({ cartItems });
-    } catch ({ name, message }) {
-      ({ name, message });
+    } catch (err) {
+      next(err);
     }
 });
 
@@ -33,8 +33,8 @@ cartRouter.delete("/:cartId", async (req, res, next) => {
         const {cartId} = req.params
       const cartItems = await destroyCart(cartId);
       res.send({ cartItems });
-    } catch ({ name, message }) {
-      ({ name, message });
+    } catch (err) {
+      next(err);
     }
 });
 

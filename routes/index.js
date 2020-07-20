@@ -59,7 +59,10 @@ const cartRouter = require("./shoppingcart");
 apiRouter.use("/cart", cartRouter);
 
 apiRouter.use((err, req, res, next) => {
-  res.send(err);
+  res.status(500).json({
+    message: err.message,
+    stack: err.stack
+  })
 });
 
 module.exports = apiRouter;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ReviewModal from "./ReviewModal";
 import "./SingleCard.css";
-import {addToCart, removeFromCart} from "../../api/Cart"
+import {addToCart, removeFromCart} from "../../api/Cart";
+//import {updateCart} from ""
 
 function SingleCard(props) {
   // const [searchInput, setSearchInput] = useState("");

@@ -15,8 +15,8 @@ prodRouter.get("/", async (req, res, next) => {
     res.send({
       allProducts,
     });
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -25,8 +25,8 @@ prodRouter.delete("/:id", async (req, res, next) => {
       const {id} = req.params
     const products = await destroyProduct(id);
     res.send({ products });
-  } catch ({ name, message }) {
-    ({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -39,8 +39,8 @@ prodRouter.patch("/:id", async (req, res, next) => {
     });
 
     res.send(updatedProduct);
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -49,8 +49,8 @@ prodRouter.post("/create", async (req, res, next) => {
       const {itemname, description, price, category, image} = req.body
     const newItem = await createProduct({itemname, description, price, category, image});
     res.send({ newItem });
-  } catch ({ name, message }) {
-    ({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
