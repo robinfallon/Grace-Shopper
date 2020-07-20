@@ -3,7 +3,7 @@ const apiRouter = require("express");
 const cartRouter = apiRouter.Router();
 
 const {
-    updateCart,
+    addToCart,
     destroyCart,
     getCartbyUserId
 } = require("../db");
@@ -20,9 +20,13 @@ cartRouter.get("/", async (req, res, next) => {
 
 cartRouter.post("/", async (req, res, next) => {
     try {
-        const {userId, productId} = req.body
-      const cartItems = await updateCart(userId, productId);
+        const {productId} = req.body
+        if (req.user) {
+        const userId = req.user.id
+      const cartItems = await addToCart(userId, productId);
       res.send({ cartItems });
+    } // else add to anonymous cart...
+      
     } catch (err) {
       next(err);
     }
