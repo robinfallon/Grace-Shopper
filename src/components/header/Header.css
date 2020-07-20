@@ -39,8 +39,6 @@
   }
 }
 
-
-
 .header:hover {
   /* padding-top: 2em; */
   /* padding-bottom: 2em; */
@@ -90,6 +88,12 @@
 .td {
   display: table-cell;
   vertical-align: middle;
+}
+
+.nameplacement {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 input,
