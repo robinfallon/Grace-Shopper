@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CheckOut.css";
+import "./Checkout.css"
 import Button from "@material-ui/core/Button";
 import StripeCheckout from "react-stripe-checkout";
 

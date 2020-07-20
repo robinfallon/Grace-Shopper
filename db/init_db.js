@@ -17,6 +17,7 @@ const {
   getUser,
   updateCart,
   getCartbyUserId,
+  destroyProduct,
 } = require("./index");
 
 async function createInitialReviews() {
@@ -583,6 +584,7 @@ async function testDB() {
     //await cartUpdate();
     const cart = await getCartbyUserId(1);
     await createInitialReviews();
+    // await destroyProduct(1);
     const userArman = await getUserByUsername("arman");
     const userJames = await getUserByUsername("james");
     const userRobin = await getUserByUsername("robin");

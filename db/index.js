@@ -95,14 +95,7 @@ async function createReview({ productId, userId, review }) {
   }
 }
 
-// async function getAllProducts() {
-//   const { rows } = await client.query(
-//     `
-//     SELECT * FROM products
-//     `
-//   );
-//   return rows;
-// }
+
 
 async function getAllProducts() {
   const { rows } = await client.query(`
@@ -127,6 +120,28 @@ async function getAllProducts() {
     })
   );
   return productswithreviews;
+}
+async function updateProduct({ productId, itemname, description, price, category, image}) {
+  const { rows } = fields;
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  try {
+    if (setString.length > 0) {
+      await client.query(
+        `
+        UPDATE products
+        SET ${setString}
+        WHERE id=${productId}
+        RETURNING *;
+      `,
+        Object.values(fields)
+      );
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function getProductsById(id) {
@@ -265,6 +280,29 @@ async function updateCart(userId, productId) {
   }
 }
 
+async function destroyProduct(id) {
+  try {
+    console.log("destroying", id)
+    const { rows } = await client.query(
+      `
+      DELETE FROM reviews
+      WHERE "productId"=${id}
+      RETURNING *
+      `
+    ).then(
+      await client.query(`
+      DELETE FROM products
+      WHERE id=${id}
+      RETURNING *;
+      `
+      )
+    );
+    console.log(rows);
+  } catch ({ name, message }) {
+    console.log({ name, message });
+  }
+}
+
 async function destroyCart(userId, productId) {
   try {
     const { rows } = await client.query(
@@ -330,4 +368,6 @@ module.exports = {
   updateCart,
   getCartbyUserId,
   destroyCart,
+  updateProduct,
+  destroyProduct
 };
