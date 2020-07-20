@@ -27,6 +27,8 @@ export async function loginUser(username, password) {
     });
     console.log(data);
     localStorage.setItem("token", data.token);
+    localStorage.setItem("user", data.user.username);
+    localStorage.setItem("seller", data.user.seller)
     return data;
   } catch (error) {
     throw error;
