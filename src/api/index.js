@@ -28,8 +28,17 @@ export async function loginUser(username, password) {
     console.log(data);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", data.user.username);
+<<<<<<< HEAD
     localStorage.setItem("seller", data.user.seller)
     localStorage.setItem('id', data.user.id)
+=======
+    localStorage.setItem("seller", data.user.seller);
+<<<<<<< HEAD
+    localStorage.setItem("id", data.user.id);
+=======
+    localStorage.setItem('id', data.user.id)
+>>>>>>> b2930b0a791b691a7999bcdae3b9ef3c9be91bd9
+>>>>>>> 26bc9f0118c9fa4cbc5ec7a4076e46ac458848f3
     return data;
   } catch (error) {
     throw error;
