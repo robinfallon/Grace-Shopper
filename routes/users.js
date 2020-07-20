@@ -50,7 +50,7 @@ usersRouter.post("/login", async (req, res, next) => {
         process.env.JWT_SECRET,
         { expiresIn: "1w" }
       );
-      res.send({ message: "you're logged in!", token });
+      res.send({ message: "you're logged in!", token, user });
     }
   } catch (error) {
     console.log(error);
@@ -88,7 +88,7 @@ usersRouter.post("/register", async (req, res, next) => {
             process.env.JWT_SECRET,
             { expiresIn: "1w" }
           );
-          res.send({ message: "you're logged in!", token });
+          res.send({ message: "you're logged in!", token, });
         }
       });
     }
