@@ -54,6 +54,7 @@ function Modal({ setShowModal, setUser }) {
     event.preventDefault();
     loginUser(username, password).then(() => {
       setUser(username);
+
       cancelCourse();
     });
   };

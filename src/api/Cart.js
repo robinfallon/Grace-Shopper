@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export async function addToCart(productId) {
   try {
@@ -23,6 +23,15 @@ export async function removeFromCart(id) {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateCartForUser() {
+  try {
+    const { data } = await axios.post("/api/cart/");
     return data;
   } catch (error) {
     throw error;
