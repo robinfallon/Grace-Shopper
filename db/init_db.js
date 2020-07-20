@@ -471,11 +471,13 @@ async function createTables() {
         );
         CREATE TABLE shoppingcart(
           id SERIAL PRIMARY KEY,
+          quantity varchar NOT NULL,
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id)
         );
         CREATE TABLE anonshoppingcart(
           id SERIAL PRIMARY KEY,
+          quantity varchar NOT NULL,
           "productId" SERIAL REFERENCES products (id)
         );
       `);
