@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+import "./CheckOut.css";
+=======
 import "./CheckOut.css"
+>>>>>>> b2930b0a791b691a7999bcdae3b9ef3c9be91bd9
 import Button from "@material-ui/core/Button";
 import StripeCheckout from "react-stripe-checkout";
 
