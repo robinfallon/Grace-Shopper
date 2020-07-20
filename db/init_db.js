@@ -605,6 +605,8 @@ async function testDB() {
     // console.log("line 104", products);
     const taxes = await getAllTaxes();
     // console.log("taxes", taxes);
+    // const updatedcart = await updateCart(3,1,5)
+    // console.log(updatedcart)
     console.log("username", userArman, userJames, userRobin);
     // console.log(cart);
   } catch (error) {
