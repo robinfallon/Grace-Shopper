@@ -16,8 +16,8 @@ cartRouter.get("/", async (req, res, next) => {
 
 cartRouter.post("/", async (req, res, next) => {
     try {
-        const {userId, productId} = req.body
-      const cartItems = await updateCart(userId, productId);
+        const {userId, productId, quantity} = req.body
+      const cartItems = await updateCart(userId, productId, quantity);
       res.send({ cartItems });
     } catch (err) {
       next(err);
@@ -33,5 +33,7 @@ cartRouter.delete("/:cartId", async (req, res, next) => {
       next(err);
     }
 });
+
+
 
 module.exports = cartRouter;
