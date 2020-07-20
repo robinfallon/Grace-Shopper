@@ -239,41 +239,42 @@ async function getReviewsByID(id) {
   }
 }
 
-async function updateReview({ productId, userId, reviews }) {
-  const { rows } = fields;
-  const setString = Object.keys(fields)
-    .map((key, index) => `"${key}"=$${index + 1}`)
-    .join(", ");
+// async function updateCart({ cartId, quantity }) {
+//   const { rows } = fields;
+//   const setString = Object.keys(fields)
+//     .map((key, index) => `"${key}"=$${index + 1}`)
+//     .join(", ");
 
-  try {
-    if (setString.length > 0) {
-      await client.query(
-        `
-        UPDATE reviews
-        SET ${setString}
-        WHERE id=${productId}
-        RETURNING *;
-      `,
-        Object.values(fields)
-      );
-    }
-  } catch (error) {
-    throw error;
-  }
-}
+//   try {
+//     if (setString.length > 0) {
+//       await client.query(
+//         `
+//         UPDATE shoppingcart
+//         SET ${setString}
+//         WHERE id=${productId}
+//         RETURNING *;
+//       `,
+//         Object.values(fields)
+//       );
+//     }
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 
 
-async function updateCart(userId, productId) {
+async function updateCart(userId, productId, quantity) {
   try {
     console.log(productId);
     const { rows } = await client.query(
       `
-      INSERT INTO shoppingcart("userId", "productId")
-      VALUES ($1, $2)
+      INSERT INTO shoppingcart("userId", "productId", "quantity")
+      VALUES ($1, $2, $3)
       `,
-      [userId, productId]
+      [userId, productId, quantity]
     );
+    return rows;
   } catch (error) {
     console.log(error);
     throw error;

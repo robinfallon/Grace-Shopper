@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import "./Header.css";
 import Modal from "./Modal";
 
-function reload() {
-  console.log("cleared fire");
-  localStorage.clear();
-  window.location.reload(false);
-}
-
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = React.useState(localStorage.getItem("user"));
+  const [user, setUser] = React.useState(
+    localStorage.getItem('user')
+  )
   console.log("USER!!!!", user);
   // useEffect(() => {
   //   getUserInfo().then(setUser);
@@ -38,11 +34,7 @@ function Header({ searchInput, setSearchInput }) {
           </div>
         </form>
         {user ? (
-          <div className="nameplacement">
-            <button>Hello {user}!</button>
-
-            <button onClick={reload}>Logout!</button>
-          </div>
+          <button>Hello {user}!</button>
         ) : (
           <button
             className="account"

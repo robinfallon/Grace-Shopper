@@ -41,8 +41,8 @@ function Modal({ setShowModal, setUser }) {
     if (password === regispassword) {
       registerUser(username, password, email).then(() => {
         setUser(username);
-        localStorage.setItem("user", username);
-        localStorage.setItem("seller", false);
+        localStorage.setItem('user', username)
+        localStorage.setItem('seller', false)
         cancelCourse();
       });
     } else {
