@@ -5,15 +5,15 @@ import { getUserInfo } from "../../api/index";
 
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("")
   console.log("USER!!!!", user);
-  useEffect(() => {
-    getUserInfo().then(setUser);
-  }, [localStorage, showModal]);
+  // useEffect(() => {
+  //   getUserInfo().then(setUser);
+  // }, [localStorage, showModal]);
 
   return (
     <>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && <Modal setUser={setUser} setShowModal={setShowModal} />}
       <div className="header">
         <div className="rose">Grace Shopper</div>
         <form method="get" action="">
@@ -32,8 +32,8 @@ function Header({ searchInput, setSearchInput }) {
             <div className="td" id="s-cover"></div>
           </div>
         </form>
-        {user.id ? (
-          <button>Hello!</button>
+        {user ? (
+          <button>Hello {user}!</button>
         ) : (
           <button
             className="account"
