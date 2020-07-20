@@ -13,8 +13,8 @@ reviewRouter.get("/", async (req, res, next) => {
   try {
     const reviews = await getAllReviews();
     res.send({ reviews });
-  } catch ({ name, message }) {
-    ({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -23,8 +23,8 @@ reviewRouter.get("/productReviews/:productId", async (req, res, next) => {
     const { productId } = req.params;
     const review = await getReviewsByProductID(productId);
     res.send({ review });
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -33,8 +33,8 @@ reviewRouter.get("/userReviews/:userId", async (req, res, next) => {
     const { userId } = req.params;
     const reviews = await getReviewsByUserID(userId);
     res.send({ reviews });
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -47,8 +47,8 @@ reviewRouter.patch("/:reviewId", async (req, res, next) => {
     });
 
     res.send(updatedReview);
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -57,8 +57,8 @@ reviewRouter.delete("/:reviewId", async (req, res, next) => {
   try {
     const deletedReview = await destroyReview(req.params.reviewId);
     res.send(deletedReview);
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    next(err);
   }
 });
 
