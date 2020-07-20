@@ -1,5 +1,5 @@
 import React from "react";
-import "./CartBody.css";
+import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
 import CheckOut from "./CheckOut";
 
