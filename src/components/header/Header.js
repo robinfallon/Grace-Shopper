@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import Modal from "./Modal";
-import { getUserInfo } from "../../api/index";
 
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState("");
   console.log("USER!!!!", user);
   // useEffect(() => {
   //   getUserInfo().then(setUser);
