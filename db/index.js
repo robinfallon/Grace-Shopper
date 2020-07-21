@@ -95,8 +95,6 @@ async function createReview({ productId, userId, review }) {
   }
 }
 
-
-
 async function getAllProducts() {
   const { rows } = await client.query(`
    SELECT id, itemname, description, price, category, image
@@ -121,7 +119,14 @@ async function getAllProducts() {
   );
   return productswithreviews;
 }
-async function updateProduct({ productId, itemname, description, price, category, image}) {
+async function updateProduct({
+  productId,
+  itemname,
+  description,
+  price,
+  category,
+  image,
+}) {
   const { rows } = fields;
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -263,8 +268,8 @@ async function getReviewsByID(id) {
 // }
 
 
-
 async function updateCart(userId, productId, quantity, itemname, price) {
+
   try {
     console.log("productUD index.js", userId, productId, quantity, itemname, price);
     const { rows } = await client.query(
@@ -283,21 +288,22 @@ async function updateCart(userId, productId, quantity, itemname, price) {
 
 async function destroyProduct(id) {
   try {
-    console.log("destroying", id)
-    const { rows } = await client.query(
-      `
+    console.log("destroying", id);
+    const { rows } = await client
+      .query(
+        `
       DELETE FROM reviews
       WHERE "productId"=${id}
       RETURNING *
       `
-    ).then(
-      await client.query(`
+      )
+      .then(
+        await client.query(`
       DELETE FROM products
       WHERE id=${id}
       RETURNING *;
-      `
-      )
-    );
+      `)
+      );
     console.log(rows);
   } catch ({ name, message }) {
     console.log({ name, message });
@@ -370,5 +376,5 @@ module.exports = {
   getCartbyUserId,
   destroyCart,
   updateProduct,
-  destroyProduct
+  destroyProduct,
 };

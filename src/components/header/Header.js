@@ -4,9 +4,7 @@ import Modal from "./Modal";
 
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = React.useState(
-    localStorage.getItem('user')
-  )
+  const [user, setUser] = React.useState(localStorage.getItem("user"));
   console.log("USER!!!!", user);
   // useEffect(() => {
   //   getUserInfo().then(setUser);
