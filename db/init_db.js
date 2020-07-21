@@ -471,7 +471,7 @@ async function createTables() {
         );
         CREATE TABLE shoppingcart(
           id SERIAL PRIMARY KEY,
-          quantity varchar NOT NULL,
+          quantity varchar,
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id)
         );
@@ -487,7 +487,7 @@ async function createTables() {
 }
 // "username" INTEGER REFERENCES users(id),
 //                       "productId" INTEGER REFERENCES products(id),
-
+//          quantity varchar NOT NULL,
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
