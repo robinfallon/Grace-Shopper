@@ -471,11 +471,13 @@ async function createTables() {
         );
         CREATE TABLE shoppingcart(
           id SERIAL PRIMARY KEY,
+          quantity varchar NOT NULL,
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id)
         );
         CREATE TABLE anonshoppingcart(
           id SERIAL PRIMARY KEY,
+          quantity varchar NOT NULL,
           "productId" SERIAL REFERENCES products (id)
         );
       `);
@@ -603,6 +605,8 @@ async function testDB() {
     // console.log("line 104", products);
     const taxes = await getAllTaxes();
     // console.log("taxes", taxes);
+    // const updatedcart = await updateCart(3,1,5)
+    // console.log(updatedcart)
     console.log("username", userArman, userJames, userRobin);
     // console.log(cart);
   } catch (error) {
