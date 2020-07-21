@@ -264,15 +264,15 @@ async function getReviewsByID(id) {
 
 
 
-async function updateCart(userId, productId, quantity) {
+async function updateCart(userId, productId, quantity, itemname, price) {
   try {
-    console.log("productUD index.js", userId, productId, quantity);
+    console.log("productUD index.js", userId, productId, quantity, itemname, price);
     const { rows } = await client.query(
       `
-      INSERT INTO shoppingcart("userId", "productId", "quantity")
-      VALUES ($1, $2, $3)
+      INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price")
+      VALUES ($1, $2, $3, $4, $5)
       `,
-      [userId, productId, quantity]
+      [userId, productId, quantity, itemname, price]
     );
     return rows;
   } catch (error) {
