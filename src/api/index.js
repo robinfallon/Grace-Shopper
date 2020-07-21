@@ -28,8 +28,14 @@ export async function loginUser(username, password) {
     console.log(data);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", data.user.username);
+    localStorage.setItem("seller", data.user.seller)
+    localStorage.setItem('id', data.user.id)
     localStorage.setItem("seller", data.user.seller);
     localStorage.setItem("id", data.user.id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 059f46939404c7f838a628a19dd4ecd7ee6a0589
     return data;
   } catch (error) {
     throw error;
@@ -45,6 +51,9 @@ export async function registerUser(username, password, email) {
     });
     console.log(data);
     localStorage.setItem("token", data.token);
+    localStorage.setItem("user", data.user.username);
+    localStorage.setItem("seller", data.user.seller)
+    localStorage.setItem('id', data.user.id)
     return data;
   } catch (error) {
     throw error;
