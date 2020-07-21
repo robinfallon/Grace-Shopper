@@ -269,7 +269,7 @@ async function getReviewsByID(id) {
 
 async function updateCart(userId, productId, quantity) {
   try {
-    console.log(productId);
+    console.log("productUD index.js", userId, productId, quantity);
     const { rows } = await client.query(
       `
       INSERT INTO shoppingcart("userId", "productId", "quantity")
