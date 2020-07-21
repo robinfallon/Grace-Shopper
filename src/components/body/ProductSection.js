@@ -7,7 +7,7 @@ function createResult(productData) {
   return (
     <SingleCard
       key={productData.id}
-      id={productData.itemnamegit} //instead of {productData.id}?
+      id={productData.id} //instead of {productData.id}?
       itemname={productData.itemname}
       description={productData.description}
       price={productData.price}
