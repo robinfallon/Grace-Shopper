@@ -61,13 +61,8 @@ apiRouter.use("/cart", cartRouter);
 apiRouter.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message,
-<<<<<<< HEAD
     stack: err.stack,
   });
-=======
-    stack: err.stack
-  })
->>>>>>> b2930b0a791b691a7999bcdae3b9ef3c9be91bd9
 });
 
 module.exports = apiRouter;
