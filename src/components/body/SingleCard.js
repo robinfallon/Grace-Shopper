@@ -7,10 +7,12 @@ function SingleCard(props) {
   // const [searchInput, setSearchInput] = useState("");
   // console.log("props", props);
   const [reviewModal, setReviewModal] = useState(false);
-
+  const userId = localStorage.getItem('id')
+  const quantity = 1;
+  console.log("customer ID=", userId)
   // const test = props.review.map()
   // console.log("test", test)
-  console.log(props);
+  console.log("props", props);
 
   return (
     <>
@@ -30,7 +32,7 @@ function SingleCard(props) {
             <button
               id="addToCart"
               onClick={() => {
-                addToCart(props.id);
+                addToCart(userId, props.id, quantity);
               }}
             >
               Add to Cart
