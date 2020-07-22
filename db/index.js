@@ -267,7 +267,6 @@ async function getReviewsByID(id) {
 //   }
 // }
 
-
 async function updateCart(userId, productId, quantity, itemname, price) {
 
   try {
@@ -314,8 +313,8 @@ async function destroyCart(userId, productId) {
   try {
     const { rows } = await client.query(
       `
-      DELETE FROM shoppingcart("userId", "productId")
-      WHERE productId=${productId}
+      DELETE TOP(1) FROM shoppingcart
+      WHERE productId=${productId} and userId=${userId}
       RETURNING *;
       `
     );
@@ -372,7 +371,7 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
-  updateCart,
+  //addToCart,
   getCartbyUserId,
   destroyCart,
   updateProduct,

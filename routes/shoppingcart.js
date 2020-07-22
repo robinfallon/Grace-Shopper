@@ -2,7 +2,11 @@ const apiRouter = require("express");
 
 const cartRouter = apiRouter.Router();
 
-const { updateCart, destroyCart, getCartbyUserId } = require("../db");
+const {
+    addToCart,
+    destroyCart,
+    getCartbyUserId
+} = require("../db");
 
 cartRouter.get("/", async (req, res, next) => {
   try {
