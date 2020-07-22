@@ -29,14 +29,14 @@ function SingleCard(props) {
               Reviews
             </button>
             <br></br>
-            {/* <button
+            <button
               id="removeFromCart"
               onClick={() => {
                 removeFromCart(props.id);
               }}
             >
               Remove from Cart
-            </button> */}
+            </button>
             <a
               className="bt more-bt"
               id="addToCart"

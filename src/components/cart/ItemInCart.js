@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function ItemInCart(props) {
+  const [number, setNumber] = useState(1);
+  console.log("number", number);
+  const addOne = () => {
+    if (number) {
+      setNumber(number + 1);
+    }
+  };
+  const minusOne = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    } else {
+      setNumber(number);
+    }
+  };
+  console.log(props);
   return (
     <>
       <div className="layout-inline row">
@@ -14,11 +29,11 @@ function ItemInCart(props) {
         </div>
 
         <div className="col col-qty layout-inline">
-          <a href="#" className="qty qty-minus">
+          <a href="#" className="qty qty-minus" onClick={minusOne}>
             -
           </a>
-          <input type="numeric" value={props.quantity} />
-          <a href="#" className="qty qty-plus">
+          <input type="numeric" value={number} />
+          <a href="#" className="qty qty-plus" onClick={addOne}>
             +
           </a>
         </div>
@@ -27,7 +42,7 @@ function ItemInCart(props) {
           <p>7%</p>
         </div>
         <div className="col col-total col-numeric">
-          <p>{Math.round(props.price * props.quantity * 1.07 * 100) / 100}</p>
+          <p>{Math.round(props.price * number * 1.07 * 100) / 100}</p>
         </div>
       </div>
     </>
