@@ -149,26 +149,27 @@ async function updateProduct({
   }
 }
 
-async function updateQuantity({ quantity }) {
-  const { rows } = fields;
-  const setString = Object.keys(fields)
-    .map((key, index) => `"${key}"=$${index + 1}`)
-    .join(", ");
+async function updateCartForUser(quantity, cartId) {
+  // const { quantity } = fields;
+  // const setString = Object.keys(fields)
+  //   .map((key, index) => `"${key}"=$${index + 1}`)
+  //   .join(", ");
 
   try {
-    if (setString.length > 0) {
+    // if (setString.length > 0) {
       await client.query(
         `
-        UPDATE products
-        SET ${setString}
-        WHERE id=${productId}
-        RETURNING *;
-      `,
-        Object.values(fields)
+        UPDATE shoppingcart
+        SET quantity=${quantity}
+        WHERE id=${cartId}
+      `
+      // ,
+      //   [quantity, cartId]
       );
-    }
+    // }
   } catch (error) {
     throw error;
+
   }
 }
 
@@ -401,11 +402,10 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
-  //addToCart,
   getCartbyUserId,
   destroyCart,
   updateProduct,
   destroyProduct,
-  updateQuantity,
+  updateCartForUser,
   updateCart,
 };
