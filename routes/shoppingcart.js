@@ -2,38 +2,51 @@ const apiRouter = require("express");
 
 const cartRouter = apiRouter.Router();
 
-const { updateCart, destroyCart, getCartbyUserId } = require("../db");
+const { updateCart, destroyCart, getCartbyUserId, updateQuantity } = require("../db");
 
 cartRouter.get("/", async (req, res, next) => {
-    try {
-        const {id} = req.user
-      const cartItems = await getCartbyUserId(id);
-      res.send({ cartItems });
-    } catch (err) {
-      next(err);
-    }
+  try {
+    const { id } = req.user;
+    const cartItems = await getCartbyUserId(id);
+    res.send({ cartItems });
+  } catch (err) {
+    next(err);
+  }
 });
 
+// cartRouter.post("/", async (req, res, next) => {
+//     try {
+//         const {quantity} = req.body
+//       const cartItems = await updateQuantity(quantity);
+//       res.send({ cartItems });
+//     } catch (err) {
+//       next(err);
+//     }
+// });
+
 cartRouter.post("/", async (req, res, next) => {
-    try {
-        const {userId, productId, quantity, itemname, price} = req.body
-      const cartItems = await updateCart(userId, productId, quantity, itemname, price);
-      res.send({ cartItems });
-    } catch (err) {
-      next(err);
-    }
+  try {
+    console.log("trying")
+      const {userId, productId, quantity, itemname, price, image} = req.body
+          console.log("trying", userId, productId, quantity, itemname, price, image)
+      console.log("req",req.body)
+
+    const cartItems = await updateCart(userId, productId, quantity, itemname, price, image);
+    res.send({ cartItems });
+  } catch (err) {
+  
+    next(err);
+  }
 });
 
 cartRouter.delete("/:cartId", async (req, res, next) => {
-    try {
-        const {cartId} = req.params
-      const cartItems = await destroyCart(cartId);
-      res.send({ cartItems });
-    } catch (err) {
-      next(err);
-    }
+  try {
+    const { cartId } = req.params;
+    const cartItems = await destroyCart(cartId);
+    res.send({ cartItems });
+  } catch (err) {
+    next(err);
+  }
 });
-
-
 
 module.exports = cartRouter;

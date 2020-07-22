@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export async function addToCart(userId, productId, quantity, itemname, price) {
+export async function addToCart(userId, productId, quantity, itemname, price, image) {
   try {
-    // console.log("ATC is firing with", userId, productId, quantity, itemname)
-    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price });
+    console.log("ATC is firing with", userId, productId, quantity, itemname, price, image)
+    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price, image });
+    console.log("sending to shoppingcart.js")
     return data;
   } catch (error) {
     throw error;
