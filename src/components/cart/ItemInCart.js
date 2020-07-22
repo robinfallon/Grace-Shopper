@@ -1,6 +1,13 @@
 import React from "react";
+function addOne(props) {
+  {
+    props.quantity++;
+    window.location.reload(false);
+  }
+}
 
 function ItemInCart(props) {
+  console.log(props)
   return (
     <>
       <div className="layout-inline row">
@@ -18,7 +25,7 @@ function ItemInCart(props) {
             -
           </a>
           <input type="numeric" value={props.quantity} />
-          <a href="#" className="qty qty-plus">
+          <a href="#" className="qty qty-plus" onClick={addOne}>
             +
           </a>
         </div>

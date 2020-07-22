@@ -10,7 +10,7 @@ export async function addToCart(
 ) {
   try {
     // console.log("ATC is firing with", userId, productId, quantity, itemname)
-    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price })
+    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price, image })
     return data;
   } catch (error) {
     throw error;

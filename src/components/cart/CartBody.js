@@ -52,7 +52,7 @@ function CartBody() {
                 <div className="col">
                   <p>Shipping</p>
                 </div>
-                <div className="col totalShipping"></div>
+                <div className="col totalShipping">6.99</div>
               </div>
               <div className="row layout-inline">
                 <div className="col">
