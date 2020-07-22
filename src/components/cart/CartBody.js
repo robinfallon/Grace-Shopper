@@ -18,8 +18,6 @@ function createLineItem(lineData) {
 }
 
 function CartBody() {
-  const userId = localStorage.getItem("id");
-
   const [userCart, setUserCart] = useState([]);
   useEffect(() => {
     showMyCart().then(setUserCart);
@@ -30,14 +28,12 @@ function CartBody() {
   userCart.forEach((item) => {
     finalPriceArr.push(parseFloat(item.price));
   });
-
-  console.log(finalPriceArr);
   let finalPriceReduce = finalPriceArr.reduce(function (acc, cur) {
     return acc + cur;
   }, 0);
-  console.log(finalPriceReduce);
-  let finalPriceAfterTax = Math.floor(finalPriceReduce * 1.07 * 100) / 100;
-  console.log(finalPriceAfterTax);
+  let finalPriceAfterTax = finalPriceReduce * 1.07;
+  let finalPriceWithShipping = finalPriceAfterTax + 6.99;
+  let finalPriceWithTwoSigFigs = Math.floor(finalPriceWithShipping * 100) / 100;
 
   return (
     <div className="cartBodySection">
@@ -70,7 +66,7 @@ function CartBody() {
                 <div className="col">
                   <p>Total</p>
                 </div>
-                <div className="col totalPrice">{finalPriceAfterTax}</div>
+                <div className="col totalPrice">{finalPriceWithTwoSigFigs}</div>
               </div>
             </div>
           </div>
