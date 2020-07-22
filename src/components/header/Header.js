@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./Header.css";
 import Modal from "./Modal";
 
+function logout() {
+  localStorage.clear();
+  window.location.reload(true);
+}
+
 function Header({ searchInput, setSearchInput }) {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = React.useState(localStorage.getItem("user"));
@@ -32,7 +37,10 @@ function Header({ searchInput, setSearchInput }) {
           </div>
         </form>
         {user ? (
-          <button>Hello {user}!</button>
+          <div className="userNameLogout">
+            <button>Hello {user}!</button>
+            <button onClick={logout}>Logout?</button>
+          </div>
         ) : (
           <button
             className="account"

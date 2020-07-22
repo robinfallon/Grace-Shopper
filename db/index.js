@@ -267,11 +267,16 @@ async function getReviewsByID(id) {
 //   }
 // }
 
-
 async function updateCart(userId, productId, quantity, itemname, price) {
-
   try {
-    console.log("productUD index.js", userId, productId, quantity, itemname, price);
+    console.log(
+      "productUD index.js",
+      userId,
+      productId,
+      quantity,
+      itemname,
+      price
+    );
     const { rows } = await client.query(
       `
       INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price")
@@ -331,9 +336,8 @@ async function getCartbyUserId(userId) {
       `
       SELECT *
       FROM shoppingcart
-      WHERE "userId" = $1;
-    `,
-      [userId]
+      WHERE "userId"=${userId};
+    `
     );
     return rows;
   } catch (error) {

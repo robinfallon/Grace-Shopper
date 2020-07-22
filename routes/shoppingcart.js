@@ -7,6 +7,7 @@ const { updateCart, destroyCart, getCartbyUserId } = require("../db");
 cartRouter.get("/", async (req, res, next) => {
   try {
     const { id } = req.user;
+    console.log("A WORD", req.user);
     const cartItems = await getCartbyUserId(id);
     res.send({ cartItems });
   } catch (err) {
@@ -15,14 +16,19 @@ cartRouter.get("/", async (req, res, next) => {
 });
 
 cartRouter.post("/", async (req, res, next) => {
-    try {
-        const {userId, productId, quantity, itemname, price} = req.body
-      const cartItems = await updateCart(userId, productId, quantity, itemname, price);
-      res.send({ cartItems });
-    } catch (err) {
-      next(err);
-    }
-
+  try {
+    const { userId, productId, quantity, itemname, price } = req.body;
+    const cartItems = await updateCart(
+      userId,
+      productId,
+      quantity,
+      itemname,
+      price
+    );
+    res.send({ cartItems });
+  } catch (err) {
+    next(err);
+  }
 });
 
 cartRouter.delete("/:cartId", async (req, res, next) => {
