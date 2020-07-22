@@ -30,8 +30,6 @@ export async function loginUser(username, password) {
     localStorage.setItem("user", data.user.username);
     localStorage.setItem("seller", data.user.seller);
     localStorage.setItem("id", data.user.id);
-    localStorage.setItem("seller", data.user.seller);
-    localStorage.setItem("id", data.user.id);
     return data;
   } catch (error) {
     throw error;

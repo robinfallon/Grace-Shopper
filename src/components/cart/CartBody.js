@@ -1,8 +1,7 @@
 import React from "react";
 import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
-import CheckOut from "./CheckOutPage";
-
+import CheckOut from "./CheckOutPage"
 function CartBody() {
   return (
     <div className="cartBodySection">
