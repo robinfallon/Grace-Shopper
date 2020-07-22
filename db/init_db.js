@@ -475,7 +475,8 @@ async function createTables() {
           "productId" SERIAL REFERENCES products (id),
           "userId" SERIAL REFERENCES users (id),
           itemname varchar NOT NULL,
-          price varchar NOT NULL
+          price varchar NOT NULL,
+          image varchar NOT NULL
         );
         CREATE TABLE anonshoppingcart(
           id SERIAL PRIMARY KEY,

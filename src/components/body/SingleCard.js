@@ -40,7 +40,7 @@ function SingleCard(props) {
             <a className="bt more-bt"     
             id="addToCart"
               onClick={() => {
-                addToCart(userId, props.id, quantity, props.itemname, props.price);
+                addToCart(userId, props.id, quantity, props.itemname, props.price, props.image);
               }}>
               <span className="fl"></span>
               <span className="sfl"></span>
