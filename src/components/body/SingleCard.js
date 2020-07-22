@@ -8,7 +8,7 @@ function SingleCard(props) {
   // console.log("props", props);
   const [reviewModal, setReviewModal] = useState(false);
   const userId = localStorage.getItem('id')
-  const quantity = 1;
+  let quantity = 1;
   console.log("customer ID=", userId)
   // const test = props.review.map()
   // console.log("test", test)
@@ -29,15 +29,7 @@ function SingleCard(props) {
               Reviews
             </button>
             <br></br>
-            <button
-              id="addToCart"
-              onClick={() => {
-                addToCart(userId, props.id, quantity);
-              }}
-            >
-              Add to Cart
-            </button>
-            <button
+              <button
               id="removeFromCart"
               onClick={() => {
                 removeFromCart(props.id);
@@ -45,10 +37,14 @@ function SingleCard(props) {
             >
               Remove from Cart
             </button>
-            <a class="bt more-bt">
-              <span class="fl"></span>
-              <span class="sfl"></span>
-              <span class="cross"></span>
+            <a className="bt more-bt"     
+            id="addToCart"
+              onClick={() => {
+                addToCart(userId, props.id, quantity, props.itemname, props.price);
+              }}>
+              <span className="fl"></span>
+              <span className="sfl"></span>
+              <span className="cross"></span>
               <i></i>
               <p>Add for ${props.price}</p>
             </a>

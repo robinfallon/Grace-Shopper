@@ -267,21 +267,16 @@ async function getReviewsByID(id) {
 //   }
 // }
 
-<<<<<<< HEAD
+async function updateCart(userId, productId, quantity, itemname, price) {
 
-
-async function addToCart(userId, productId) {
-=======
-async function updateCart(userId, productId, quantity) {
->>>>>>> 8dfae5bd1e9f7bfe3e2d455590593ddcc135be20
   try {
-    console.log("productUD index.js", userId, productId, quantity);
+    console.log("productUD index.js", userId, productId, quantity, itemname, price);
     const { rows } = await client.query(
       `
-      INSERT INTO shoppingcart("userId", "productId", "quantity")
-      VALUES ($1, $2, $3)
+      INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price")
+      VALUES ($1, $2, $3, $4, $5)
       `,
-      [userId, productId, quantity]
+      [userId, productId, quantity, itemname, price]
     );
     return rows;
   } catch (error) {
@@ -376,7 +371,7 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
-  addToCart,
+  //addToCart,
   getCartbyUserId,
   destroyCart,
   updateProduct,
