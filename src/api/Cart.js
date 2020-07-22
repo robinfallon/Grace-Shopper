@@ -1,23 +1,17 @@
 import axios from "axios";
 
 export async function addToCart(
-  userId,
-  productId,
-  quantity,
-  itemname,
-  price,
-  image
-) {
+  userId, productId, quantity, itemname, price, image) {
   try {
-    console.log(
-      "ATC is firing with",
-      userId,
-      productId,
-      quantity,
-      itemname,
-      price,
-      image
-    );
+    // console.log(
+    //   "ATC is firing with",
+    //   userId,
+    //   productId,
+    //   quantity,
+    //   itemname,
+    //   price,
+    //   image
+    // );
     const { data } = await axios.post("/api/cart", {
       userId,
       productId,
@@ -60,16 +54,16 @@ export async function showMyCart(id) {
   }
 }
 
-// export async function updateCartForUser() {
-//   try {
-//     console.log("UDC is firing")
-//     const { data } = await axios.post("/api/cart/");
-//     console.log(data)
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+export async function updateCartForUser(cartId, quantity) {
+  try {
+    console.log("UDC is firing", cartId, quantity)
+    const { data } = await axios.post("/api/cart/");
+    console.log(data)
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 // export async function removeFromCart(id) {
 //   try {

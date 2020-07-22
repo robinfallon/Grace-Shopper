@@ -18,6 +18,7 @@ const {
   updateCart,
   getCartbyUserId,
   destroyProduct,
+  updateCartForUser,
 } = require("./index");
 
 async function createInitialReviews() {
@@ -559,16 +560,6 @@ async function createInitialUsers() {
   }
 }
 
-async function cartUpdate() {
-  try {
-    console.log("testing cart update");
-    const cart1 = await updateCart(1, 1);
-    console.log("Finished updating cart");
-  } catch (error) {
-    console.log("Error Updating Cart");
-    throw error;
-  }
-}
 
 async function rebuildDB() {
   try {
@@ -588,7 +579,9 @@ async function testDB() {
     //await cartUpdate();
     const cart = await getCartbyUserId(1);
     await createInitialReviews();
-    // await destroyProduct(1);
+    await updateCart(1, 1, 1, "item", "price", "image")
+    // updateCart(userId, productId, quantity, itemname, price, image)
+    const updated = await updateCartForUser(3, 1);
     const userArman = await getUserByUsername("arman");
     const userJames = await getUserByUsername("james");
     const userRobin = await getUserByUsername("robin");
@@ -610,6 +603,7 @@ async function testDB() {
     // const updatedcart = await updateCart(3,1,5)
     // console.log(updatedcart)
     console.log("username", userArman, userJames, userRobin);
+    console.log("updatedCart", updated)
     // console.log(cart);
   } catch (error) {
     console.error(error);

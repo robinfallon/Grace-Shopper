@@ -6,7 +6,7 @@ const {
   updateCart,
   destroyCart,
   getCartbyUserId,
-  updateQuantity,
+  updateCartForUser,
 } = require("../db");
 
 cartRouter.get("/", async (req, res, next) => {
@@ -20,15 +20,15 @@ cartRouter.get("/", async (req, res, next) => {
   }
 });
 
-// cartRouter.post("/", async (req, res, next) => {
-//     try {
-//         const {quantity} = req.body
-//       const cartItems = await updateQuantity(quantity);
-//       res.send({ cartItems });
-//     } catch (err) {
-//       next(err);
-//     }
-// });
+cartRouter.post("/update", async (req, res, next) => {
+  try {
+    const { cartId, quantity } = req.body;
+    const cartItems = await updateCartForUser(cartId, quantity);
+    res.send({ cartItems });
+  } catch (err) {
+    next(err);
+  }
+});
 
 cartRouter.post("/", async (req, res, next) => {
   try {

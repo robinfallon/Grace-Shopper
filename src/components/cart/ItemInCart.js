@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { updateCartForUser } from "../../../db";
 
 function ItemInCart(props) {
   const [number, setNumber] = useState(1);
   console.log("number", number);
   const addOne = () => {
     if (number) {
+      let quantity =
       setNumber(number + 1);
-    }
+      updateCartForUser(props.id, quantity)    }
   };
   const minusOne = () => {
     if (number > 1) {
