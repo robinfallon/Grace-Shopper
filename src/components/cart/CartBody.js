@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
-import CheckOut from "./CheckOutPage"
+import CheckOut from "./CheckOut";
+import { showMyCart } from "../../api/Cart";
+
+function createLineItem(lineData) {
+  return (
+    <ItemInCart
+      key={lineData.id}
+      id={lineData.id}
+      itemname={lineData.itemname}
+      price={lineData.price}
+      image={lineData.image}
+      quantity={lineData.quantity}
+    />
+  );
+}
+
+import CheckOut from "./CheckOutPage";
 function CartBody() {
+  const userId = localStorage.getItem("id");
+
+  const [userCart, setUserCart] = useState([]);
+  useEffect(() => {
+    showMyCart().then(setUserCart);
+  }, []);
+  console.log("usercart", userCart);
+  console.log();
+
   return (
     <div className="cartBodySection">
       <div className="container">
@@ -21,14 +46,9 @@ function CartBody() {
               <div className="col">Tax</div>
               <div className="col">Total</div>
             </div>
+            <div className="allMystuff">{userCart.map(createLineItem)}</div>
 
             <div className="tf">
-              <div className="row layout-inline">
-                <div className="col">
-                  <p>Tax</p>
-                </div>
-                <div className="col totalTax"></div>
-              </div>
               <div className="row layout-inline">
                 <div className="col">
                   <p>Shipping</p>

@@ -149,9 +149,7 @@ async function updateProduct({
   }
 }
 
-async function updateQuantity({
-  quantity
-}) {
+async function updateQuantity({ quantity }) {
   const { rows } = fields;
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -292,12 +290,18 @@ async function getReviewsByID(id) {
 //   }
 // }
 
-
-
 async function updateCart(userId, productId, quantity, itemname, price, image) {
   try {
-    console.log("info")
-    console.log("productUD index.js", userId, productId, quantity, itemname, price, image);
+    console.log("info");
+    console.log(
+      "productUD index.js",
+      userId,
+      productId,
+      quantity,
+      itemname,
+      price,
+      image
+    );
     const { rows } = await client.query(
       `
       INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price", "image")
@@ -357,9 +361,8 @@ async function getCartbyUserId(userId) {
       `
       SELECT *
       FROM shoppingcart
-      WHERE "userId" = $1;
-    `,
-      [userId]
+      WHERE "userId"=${userId};
+    `
     );
     return rows;
   } catch (error) {
