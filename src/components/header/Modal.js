@@ -34,6 +34,7 @@ function Modal({ setShowModal, setUser }) {
     setPassword("");
     setConfirm("");
     setShowModal(false);
+    window.location.reload(true);
   };
 
   const handleRegis = (event) => {

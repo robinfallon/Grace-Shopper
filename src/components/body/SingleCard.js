@@ -7,9 +7,9 @@ function SingleCard(props) {
   // const [searchInput, setSearchInput] = useState("");
   // console.log("props", props);
   const [reviewModal, setReviewModal] = useState(false);
-  const userId = localStorage.getItem('id')
+  const userId = localStorage.getItem("id");
   let quantity = 1;
-  console.log("customer ID=", userId)
+  console.log("customer ID=", userId);
   // const test = props.review.map()
   // console.log("test", test)
   console.log("props", props);
@@ -29,19 +29,28 @@ function SingleCard(props) {
               Reviews
             </button>
             <br></br>
-              <button
+            {/* <button
               id="removeFromCart"
               onClick={() => {
                 removeFromCart(props.id);
               }}
             >
               Remove from Cart
-            </button>
-            <a className="bt more-bt"     
-            id="addToCart"
+            </button> */}
+            <a
+              className="bt more-bt"
+              id="addToCart"
               onClick={() => {
-                addToCart(userId, props.id, quantity, props.itemname, props.price, props.image);
-              }}>
+                addToCart(
+                  userId,
+                  props.id,
+                  quantity,
+                  props.itemname,
+                  props.price,
+                  props.image
+                );
+              }}
+            >
               <span className="fl"></span>
               <span className="sfl"></span>
               <span className="cross"></span>

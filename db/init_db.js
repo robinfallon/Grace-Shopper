@@ -157,7 +157,7 @@ async function createInitialProducts() {
       itemname: "Canon PowerShot ELPH 180 Digital Camera",
       description:
         "Canon PowerShot ELPH 180 Camera. White Balance Control-Auto, Daylight, Cloudy, Tungsten, Fluorescent, Fluorescent H, Custom, Built-in Flash: Auto, On, Slow Synchro, Off , Flash Range: 1.6-9.8 ft. (W), 4.3-4.9 ft. (T), 50.0cm - 3.0m (W), 1.3-1.5m (T). Focusing Range: Normal: 2.0 in. (5.0cm) - infinity (W), 4.3 ft. (1.3m) - infinity (T), Auto: 0.4 in. (1.0cm) - infinity (W), 4.3 ft. (1.3m) - infinity (T), Macro: 0.4 in. - 1.6 ft. (1-50cm) (W), Infinity: 9.8 ft. (3.0m) - infinity (W), 9.8 ft. (3.0m) - infinity (T)",
-      price: "109.00",
+      price: "109.10",
       category: "Cameras",
       image: "https://i.ytimg.com/vi/K_z3dIKqSuQ/maxresdefault.jpg",
     });
@@ -174,7 +174,7 @@ async function createInitialProducts() {
       itemname: "Kodak PIXPRO Astro Zoom AZ252-WH",
       description:
         "Discover a world of creativity at your fingertips. The AZ252 is the perfect bridge camera to pursue your passion for photography. With 16 Megapixels, 25x optical zoom and a wider angle lens than traditional models, This camera might just become your new best friend. Kodak PIXPRO digital cameras - tell your story.",
-      price: "129.00",
+      price: "129.10",
       category: "Cameras",
       image: "https://m.media-amazon.com/images/I/31ozd3OibhL.jpg",
     });
@@ -188,8 +188,7 @@ async function createInitialProducts() {
         "https://www.techwipoca.com/wp-content/uploads/2019/12/71isxv6Wd-L._AC_SX679_.jpg",
     });
     const phone2 = await createProduct({
-      itemname:
-        "Samsung Galaxy S9, 64GB, Lilac Purple - Fully Unlocked (Renewed)",
+      itemname: "Samsung Galaxy S9, 64GB, Purple - Fully Unlocked (Renewed)",
       description:
         "5.8-inch Super AMOLED Capacitive Touchscreen, 1440 x 2960 pixels with Corning Gorilla Glass 5 Android OS, Qualcomm Snapdragon 845, Octa-Core (4x2.7 GHz & 4x1.7 GHz), Adreno 630 Internal Memory: 64GB, 4GB RAM - microSD Up to 400GB 12MP Camera with f/1.5-2.4, 26mm lens, Dual Pixel PDAF & 8MP Front Camera with f/1.7, 25mm lens, Auto HDR GSM Unlocked",
       price: "268.88",
