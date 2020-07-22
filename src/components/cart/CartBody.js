@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
-import CheckOut from "./CheckOut";
+import CheckOut from "./CheckOutPage";
 import { showMyCart } from "../../api/Cart";
 
 function createLineItem(lineData) {
@@ -17,7 +17,6 @@ function createLineItem(lineData) {
   );
 }
 
-import CheckOut from "./CheckOutPage";
 function CartBody() {
   const userId = localStorage.getItem("id");
 
@@ -53,7 +52,7 @@ function CartBody() {
                 <div className="col">
                   <p>Shipping</p>
                 </div>
-                <div className="col totalShipping"></div>
+                <div className="col totalShipping">6.99</div>
               </div>
               <div className="row layout-inline">
                 <div className="col">

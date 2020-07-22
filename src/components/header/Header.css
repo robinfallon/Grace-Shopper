@@ -176,6 +176,13 @@ span:hover {
   align-self: center;
 }
 
+.makethataccount {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+}
+
 /* #s-cover {
   width: 1px;
   padding-left: 35px;
