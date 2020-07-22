@@ -13,7 +13,12 @@ export async function addToCart(userId, productId, quantity, itemname, price, im
 
 export async function removeFromCart(id) {
   try {
-    const { data } = await axios.delete(`/api/cart/${id}`);
+    const { data } = await axios.delete(`/api/cart/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
     return data;
   } catch (error) {
     throw error;
