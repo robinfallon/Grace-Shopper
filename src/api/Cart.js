@@ -54,10 +54,10 @@ export async function showMyCart(id) {
   }
 }
 
-export async function updateCartForUser(cartId, quantity) {
+export async function updateCartForUser(quantity, cartId) {
   try {
-    console.log("UDC is firing", cartId, quantity)
-    const { data } = await axios.post("/api/cart/");
+    console.log("UDC is firing", quantity, cartId)
+    const { data } = await axios.put("/api/cart/update", {quantity, cartId});
     console.log(data)
     return data;
   } catch (error) {
