@@ -149,6 +149,29 @@ async function updateProduct({
   }
 }
 
+async function updateQuantity({ quantity }) {
+  const { rows } = fields;
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  try {
+    if (setString.length > 0) {
+      await client.query(
+        `
+        UPDATE products
+        SET ${setString}
+        WHERE id=${productId}
+        RETURNING *;
+      `,
+        Object.values(fields)
+      );
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getProductsById(id) {
   try {
     const { rows } = await client.query(
@@ -267,22 +290,24 @@ async function getReviewsByID(id) {
 //   }
 // }
 
-async function updateCart(userId, productId, quantity, itemname, price) {
+async function updateCart(userId, productId, quantity, itemname, price, image) {
   try {
+    console.log("info");
     console.log(
       "productUD index.js",
       userId,
       productId,
       quantity,
       itemname,
-      price
+      price,
+      image
     );
     const { rows } = await client.query(
       `
-      INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price")
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO shoppingcart("userId", "productId", "quantity", "itemname", "price", "image")
+      VALUES ($1, $2, $3, $4, $5, $6)
       `,
-      [userId, productId, quantity, itemname, price]
+      [userId, productId, quantity, itemname, price, image]
     );
     return rows;
   } catch (error) {
@@ -319,8 +344,8 @@ async function destroyCart(userId, productId) {
   try {
     const { rows } = await client.query(
       `
-      DELETE FROM shoppingcart("userId", "productId")
-      WHERE productId=${productId}
+      DELETE TOP(1) FROM shoppingcart
+      WHERE productId=${productId} and userId=${userId}
       RETURNING *;
       `
     );
@@ -376,9 +401,10 @@ module.exports = {
   createTaxRate,
   getUserByUsername,
   getUser,
-  updateCart,
+  //addToCart,
   getCartbyUserId,
   destroyCart,
   updateProduct,
   destroyProduct,
+  updateQuantity,
 };

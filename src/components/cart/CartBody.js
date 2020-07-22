@@ -17,6 +17,7 @@ function createLineItem(lineData) {
   );
 }
 
+import CheckOut from "./CheckOutPage";
 function CartBody() {
   const userId = localStorage.getItem("id");
 
