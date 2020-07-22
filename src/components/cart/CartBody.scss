@@ -202,6 +202,17 @@
     transition: all 0.3s ease-in-out;
   }
 
+  .totalShipping {
+    text-align: center;
+    font-size: 30px;
+    padding-right: 60px;
+  }
+
+  .totalPrice {
+    text-align: center;
+    font-size: 30px;
+    padding-right: 60px;
+  }
   @media screen and (max-width: 755px) {
     .container {
       width: 98%;

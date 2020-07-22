@@ -17,7 +17,7 @@ function ItemInCart(props) {
       setNumber(number);
     }
   };
-  console.log(props);
+  console.log("props", props);
   return (
     <>
       <div className="layout-inline row">
