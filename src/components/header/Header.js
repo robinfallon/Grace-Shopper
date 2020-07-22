@@ -51,10 +51,13 @@ function Header({ searchInput, setSearchInput }) {
             Log in/Sign up!
           </button>
         )}
-
-        <button className="thecartbtn">
-          <a href="/cart">cart</a>
-        </button>
+        {user ? (
+          <button className="thecartbtn">
+            <a href="/cart">cart</a>
+          </button>
+        ) : (
+          <div className="makethataccount">Want cart access? Sign up!</div>
+        )}
       </div>
     </>
   );
