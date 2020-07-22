@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from "react";
 
 function ItemInCart(props) {
-  console.log(props)
+  const [number, setNumber] = useState(1);
+  console.log("number", number);
+  const addOne = () => {
+    if (number) {
+      let quantity = setNumber(number + 1);
+      //updateQuantity(quantity)
+    }
+  };
+  const minusOne = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    } else {
+      setNumber(number);
+    }
+  };
+  console.log(props);
   return (
     <>
       <div className="layout-inline row">
@@ -9,11 +24,9 @@ function ItemInCart(props) {
           {/*<img src={props.image} alt="/" />*/}
           <p>{props.itemname}</p>
         </div>
-
         <div className="col col-price col-numeric align-center ">
           <p>${props.price}</p>
         </div>
-
         <div className="col col-qty layout-inline">
           <a href="#" className="qty qty-minus" onClick={minusOne}>
             -
@@ -23,7 +36,6 @@ function ItemInCart(props) {
             +
           </a>
         </div>
-
         <div className="col col-vat col-numeric">
           <p>7%</p>
         </div>
@@ -34,5 +46,4 @@ function ItemInCart(props) {
     </>
   );
 }
-
 export default ItemInCart;
