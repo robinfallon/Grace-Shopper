@@ -407,4 +407,5 @@ module.exports = {
   updateProduct,
   destroyProduct,
   updateQuantity,
+  updateCart,
 };
