@@ -12,7 +12,7 @@ function createLineItem(lineData) {
       itemname={lineData.itemname}
       price={lineData.price}
       image={lineData.image}
-      quantity={lineData.quantity}
+      quantity={parseInt(lineData.quantity)}
     />
   );
 }

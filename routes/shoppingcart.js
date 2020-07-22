@@ -20,10 +20,10 @@ cartRouter.get("/", async (req, res, next) => {
   }
 });
 
-cartRouter.post("/update", async (req, res, next) => {
+cartRouter.put("/update", async (req, res, next) => {
   try {
-    const { cartId, quantity } = req.body;
-    const cartItems = await updateCartForUser(cartId, quantity);
+    const { quantity, cartId } = req.body;
+    const cartItems = await updateCartForUser(quantity, cartId);
     res.send({ cartItems });
   } catch (err) {
     next(err);
