@@ -25,7 +25,19 @@ function CartBody() {
     showMyCart().then(setUserCart);
   }, []);
   console.log("usercart", userCart);
-  console.log();
+  console.log("usercartprice", userCart[0]);
+  const finalPriceArr = [];
+  userCart.forEach((item) => {
+    finalPriceArr.push(parseFloat(item.price));
+  });
+
+  console.log(finalPriceArr);
+  let finalPriceReduce = finalPriceArr.reduce(function (acc, cur) {
+    return acc + cur;
+  }, 0);
+  console.log(finalPriceReduce);
+  let finalPriceAfterTax = Math.floor(finalPriceReduce * 1.07 * 100) / 100;
+  console.log(finalPriceAfterTax);
 
   return (
     <div className="cartBodySection">
@@ -58,7 +70,7 @@ function CartBody() {
                 <div className="col">
                   <p>Total</p>
                 </div>
-                <div className="col totalPrice"></div>
+                <div className="col totalPrice">{finalPriceAfterTax}</div>
               </div>
             </div>
           </div>
