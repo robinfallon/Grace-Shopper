@@ -376,4 +376,5 @@ module.exports = {
   destroyCart,
   updateProduct,
   destroyProduct,
+  updateCart
 };
