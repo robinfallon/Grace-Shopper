@@ -3,7 +3,7 @@ import axios from "axios";
 export async function addToCart(userId, productId, quantity, itemname, price) {
   try {
     // console.log("ATC is firing with", userId, productId, quantity, itemname)
-    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price });
+    const { data } = await axios.post("/api/cart", { userId, productId, quantity, itemname, price })
     return data;
   } catch (error) {
     throw error;
