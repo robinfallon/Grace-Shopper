@@ -157,19 +157,18 @@ async function updateCartForUser(quantity, cartId) {
 
   try {
     // if (setString.length > 0) {
-      await client.query(
-        `
+    await client.query(
+      `
         UPDATE shoppingcart
         SET quantity=${quantity}
         WHERE id=${cartId}
       `
       // ,
       //   [quantity, cartId]
-      );
+    );
     // }
   } catch (error) {
     throw error;
-
   }
 }
 
@@ -341,12 +340,12 @@ async function destroyProduct(id) {
   }
 }
 
-async function destroyCart(cartId, productId) {
+async function destroyCart(cartId) {
   try {
     const { rows } = await client.query(
       `
       DELETE FROM shoppingcart
-      WHERE "productId"=${productId} and "cartId"=${cartId}
+      WHERE "id"=${cartId}
       RETURNING *;
       `
     );
