@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { updateCartForUser } from "../../api/Cart";
+import React, { useState } from "react";
+import { updateCartForUser, removeFromCart } from "../../api/Cart";
 
 function ItemInCart(props) {
-  console.log(props)
+  console.log(props);
   const [number, setNumber] = useState(props.quantity);
   console.log("number", number);
   const addOne = () => {
     if (number) {
       setNumber(number + 1);
-      updateCartForUser(number + 1, props.id)    }
+      updateCartForUser(number + 1, props.id);
+    }
   };
   const minusOne = () => {
     if (number > 1) {
       setNumber(number - 1);
-      updateCartForUser(number - 1, props.id)
+      updateCartForUser(number - 1, props.id);
     } else {
       setNumber(number);
     }
@@ -47,6 +48,15 @@ function ItemInCart(props) {
         <div className="col col-total col-numeric">
           <p>{Math.round(props.price * number * 1.07 * 100) / 100}</p>
         </div>
+        <button
+          className="deletebtn"
+          onClick={() => {
+            removeFromCart(props.id);
+            window.location.reload(true);
+          }}
+        >
+          <i className="gg-trash"></i>
+        </button>
       </div>
     </>
   );

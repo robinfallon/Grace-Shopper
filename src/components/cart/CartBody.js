@@ -52,6 +52,7 @@ function CartBody() {
               <div className="col col-qty align-center">QTY</div>
               <div className="col">Tax</div>
               <div className="col">Total</div>
+              <div className="col-del">Delete?</div>
             </div>
             <div className="allMystuff">{userCart.map(createLineItem)}</div>
 

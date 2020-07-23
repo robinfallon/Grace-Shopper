@@ -1,7 +1,13 @@
 import axios from "axios";
 
 export async function addToCart(
-  userId, productId, quantity, itemname, price, image) {
+  userId,
+  productId,
+  quantity,
+  itemname,
+  price,
+  image
+) {
   try {
     // console.log(
     //   "ATC is firing with",
@@ -29,6 +35,7 @@ export async function addToCart(
 
 export async function removeFromCart(id) {
   try {
+    console.log("firiing", id);
     const { data } = await axios.delete(`/api/cart/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -56,9 +63,9 @@ export async function showMyCart(id) {
 
 export async function updateCartForUser(quantity, cartId) {
   try {
-    console.log("UDC is firing", quantity, cartId)
-    const { data } = await axios.put("/api/cart/update", {quantity, cartId});
-    console.log(data)
+    console.log("UDC is firing", quantity, cartId);
+    const { data } = await axios.put("/api/cart/update", { quantity, cartId });
+    console.log(data);
     return data;
   } catch (error) {
     throw error;
