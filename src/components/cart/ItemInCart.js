@@ -9,12 +9,14 @@ function ItemInCart(props) {
     if (number) {
       setNumber(number + 1);
       updateCartForUser(number + 1, props.id);
+      window.location.reload(false);
     }
   };
   const minusOne = () => {
     if (number > 1) {
       setNumber(number - 1);
       updateCartForUser(number - 1, props.id);
+      window.location.reload(false);
     } else {
       setNumber(number);
     }

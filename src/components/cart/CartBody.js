@@ -25,7 +25,7 @@ function CartBody() {
 
   const finalPriceArr = [];
   userCart.forEach((item) => {
-    finalPriceArr.push(parseFloat(item.price));
+    finalPriceArr.push(parseFloat(item.price) * item.quantity);
   });
   let finalPriceReduce = finalPriceArr.reduce(function (acc, cur) {
     return acc + cur;
