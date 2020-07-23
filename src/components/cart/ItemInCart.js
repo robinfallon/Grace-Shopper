@@ -27,11 +27,9 @@ function ItemInCart(props) {
           {/*<img src={props.image} alt="/" />*/}
           <p>{props.itemname}</p>
         </div>
-
         <div className="col col-price col-numeric align-center ">
           <p>${props.price}</p>
         </div>
-
         <div className="col col-qty layout-inline">
           <a href="#!" className="qty qty-minus" onClick={minusOne}>
             -
@@ -41,7 +39,6 @@ function ItemInCart(props) {
             +
           </a>
         </div>
-
         <div className="col col-vat col-numeric">
           <p>7%</p>
         </div>
@@ -61,5 +58,4 @@ function ItemInCart(props) {
     </>
   );
 }
-
 export default ItemInCart;
