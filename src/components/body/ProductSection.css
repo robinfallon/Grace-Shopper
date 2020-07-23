@@ -46,14 +46,6 @@
   line-height: 1;
 }
 
-/*Product Rating  */
-/* .hint-star {
-  display: inline-block;
-  margin-left: 0.5em;
-  color: gold;
-  width: 50%;
-} */
-
 /* The most important information about the product */
 #container .product-details > p {
   font-family: "Farsan", cursive;
@@ -157,7 +149,7 @@
   transition: all 0.3s ease-out;
   transform: translateX(-100%);
   position: absolute;
-  line-height: 1.6;
+  line-height: 1.25;
   text-align: left;
   font-size: 120%;
   cursor: no-drop;

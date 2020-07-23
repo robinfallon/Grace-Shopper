@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import ReviewModal from "./ReviewModal";
 import "./SingleCard.css";
-import { addToCart, removeFromCart } from "../../api/Cart";
+import { addToCart } from "../../api/Cart";
 
 function SingleCard(props) {
-  // const [searchInput, setSearchInput] = useState("");
-  // console.log("props", props);
   const [reviewModal, setReviewModal] = useState(false);
   const userId = localStorage.getItem("id");
   let quantity = 1;
-  console.log("customer ID=", userId);
-  // const test = props.review.map()
-  // console.log("test", test)
-  console.log("props", props);
 
   return (
     <>
@@ -29,15 +23,9 @@ function SingleCard(props) {
               Reviews
             </button>
             <br></br>
-            {/*} <button
-              id="removeFromCart"
-              onClick={() => {
-                removeFromCart(props.id);
-              }}
-            >
-              Remove from Cart
-            </button>*/}
+
             <a
+              href="#!"
               className="bt more-bt"
               id="addToCart"
               onClick={() => {

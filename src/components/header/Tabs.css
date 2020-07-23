@@ -8,9 +8,7 @@
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
-/* * {
-  box-sizing: border-box;
-} */
+
 *::before,
 *::after {
   box-sizing: border-box;
@@ -23,7 +21,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  /* min-height: 100vh; */
   background: var(--backgroundColor);
 }
 button {
@@ -80,20 +77,16 @@ button.big-button:active {
 
 button.big-button:active::before {
   transform: translate3d(0, 0, -1em);
-
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }
 
 .tabs {
   padding-top: 20px;
   margin-bottom: 30px;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
   margin-left: 10px;
   margin-right: 10px;
 }

@@ -1,6 +1,5 @@
 const { Client } = require("pg");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 const client = new Client("postgres://localhost:5432/capstone");
 
@@ -47,9 +46,7 @@ async function getUser({ username, password }) {
 
   try {
     const user = await getUserByUsername(username);
-    console.log(user);
     if (!user) return;
-    console.log("user.password", user.password);
     const matchingPassword = await bcrypt.compareSync(password, user.password);
     if (!matchingPassword) return;
     return user;
@@ -150,23 +147,14 @@ async function updateProduct({
 }
 
 async function updateCartForUser(quantity, cartId) {
-  // const { quantity } = fields;
-  // const setString = Object.keys(fields)
-  //   .map((key, index) => `"${key}"=$${index + 1}`)
-  //   .join(", ");
-
   try {
-    // if (setString.length > 0) {
     await client.query(
       `
         UPDATE shoppingcart
         SET quantity=${quantity}
         WHERE id=${cartId}
       `
-      // ,
-      //   [quantity, cartId]
     );
-    // }
   } catch (error) {
     throw error;
   }
@@ -266,29 +254,6 @@ async function getReviewsByID(id) {
     throw error;
   }
 }
-
-// async function updateCart({ cartId, quantity }) {
-//   const { rows } = fields;
-//   const setString = Object.keys(fields)
-//     .map((key, index) => `"${key}"=$${index + 1}`)
-//     .join(", ");
-
-//   try {
-//     if (setString.length > 0) {
-//       await client.query(
-//         `
-//         UPDATE shoppingcart
-//         SET ${setString}
-//         WHERE id=${productId}
-//         RETURNING *;
-//       `,
-//         Object.values(fields)
-//       );
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// }
 
 async function updateCart(userId, productId, quantity, itemname, price, image) {
   try {

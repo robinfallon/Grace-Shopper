@@ -12,12 +12,9 @@ const {
   getUsersByID,
   getReviewsByID,
   getAllTaxes,
-  createTaxRate,
   getUserByUsername,
-  getUser,
   updateCart,
   getCartbyUserId,
-  destroyProduct,
 } = require("./index");
 
 async function createInitialReviews() {
@@ -216,8 +213,7 @@ async function createInitialProducts() {
         "https://i.pinimg.com/564x/36/1d/f9/361df9aebc2d909f81971835038ec050.jpg",
     });
     const tablet4 = await createProduct({
-      itemname:
-        "Apple iPad Air (10.5-inch, Wi-Fi, 64GB) - Space Gray",
+      itemname: "Apple iPad Air (10.5-inch, Wi-Fi, 64GB) - Space Gray",
       description:
         "10.5-inch Retina Display with True Tone and wide Color A12 Bionic chip Touch ID Fingerprint Sensor and Apple Pay 8MP back camera, 7MP FaceTime HD Front camera Stereo speakers 802.11ac Wi-Fi Up to 10 hours of battery life Lightning Connector for charging and accessories iOS 12 with group FaceTime  shared augmented reality experiences",
       price: "469.00",
@@ -231,7 +227,8 @@ async function createInitialProducts() {
         "Canon PowerShot ELPH 180 Camera. White Balance Control-Auto, Daylight, Cloudy, Tungsten, Fluorescent, Fluorescent H, Custom, Built-in Flash: Auto, On, Slow Synchro, Off , Flash Range: 1.6-9.8 ft. (W), 4.3-4.9 ft. (T), 50.0cm - 3.0m (W), 1.3-1.5m (T). Focusing Range: Normal: 2.0 in. (5.0cm) infinity (W), 4.3 ft. (1.3m) infinity (T), Auto: 0.4 in.",
       price: "109.00",
       category: "Cameras",
-      image: "https://i.pinimg.com/564x/ce/34/2a/ce342a409fc36046460f1a1ea8bac0fe.jpg",
+      image:
+        "https://i.pinimg.com/564x/ce/34/2a/ce342a409fc36046460f1a1ea8bac0fe.jpg",
     });
     const camera2 = await createProduct({
       itemname: "Kodak PIXPRO Astro Zoom AZ421-RD",
@@ -248,7 +245,8 @@ async function createInitialProducts() {
         "Discover a world of creativity at your fingertips. The AZ252 is the perfect bridge camera to pursue your passion for photography. With 16 Megapixels, 25x optical zoom and a wider angle lens than traditional models, This camera might just become your new best friend. Kodak PIXPRO digital cameras - tell your story.",
       price: "129.00",
       category: "Cameras",
-      image: "https://i.pinimg.com/564x/4b/56/99/4b5699c5af084a5473840c31f031aa00.jpg",
+      image:
+        "https://i.pinimg.com/564x/4b/56/99/4b5699c5af084a5473840c31f031aa00.jpg",
     });
     const phone1 = await createProduct({
       itemname: "Apple iPhone XS Max, 64GB, Gold - Fully Unlocked (Renewed)",
@@ -260,8 +258,7 @@ async function createInitialProducts() {
         "https://i.pinimg.com/564x/b8/46/9a/b8469a400cd34223471cdbced8569783.jpg",
     });
     const phone2 = await createProduct({
-      itemname:
-        "Samsung Galaxy S9, 64GB, Lilac Purple - Fully Unlocked",
+      itemname: "Samsung Galaxy S9, 64GB, Lilac Purple - Fully Unlocked",
       description:
         "5.8-inch Super AMOLED Capacitive Touchscreen, 1440 x 2960 pixels with Corning Gorilla Glass 5 Android OS, Qualcomm Snapdragon 845, Octa-Core (4x2.7 GHz & 4x1.7 GHz), Adreno 630 Internal Memory: 64GB, 4GB RAM - microSD Up to 400GB 12MP Camera with f/1.5-2.4, 26mm lens, Dual Pixel PDAF & 8MP Front Camera with f/1.7",
       price: "268.88",
@@ -740,7 +737,6 @@ async function createInitialUsers() {
   }
 }
 
-
 async function cartUpdate() {
   try {
     console.log("testing cart update");
@@ -751,7 +747,6 @@ async function cartUpdate() {
     throw error;
   }
 }
-
 
 async function rebuildDB() {
   try {

@@ -31,7 +31,6 @@ function Tabs({ setSearchInput }) {
       >
         Cameras
       </button>
-      {/* <button className="big-button">Lenses</button> */}
     </div>
   );
 }

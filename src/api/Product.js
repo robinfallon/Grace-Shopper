@@ -8,10 +8,3 @@ export async function getAllProducts() {
     throw error;
   }
 }
-
-// export async function searchThing() {
-//   try {
-//     const { data } = await axios.get('/api/product');
-//     data.filter
-//   }
-// }
