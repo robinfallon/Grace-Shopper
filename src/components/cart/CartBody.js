@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CartBody.scss";
 import ItemInCart from "./ItemInCart";
-import CheckOut from "../cart/CheckOutPage";
+import CheckOut from "./CheckOutPage";
 import { showMyCart } from "../../api/Cart";
 
 function createLineItem(lineData) {
