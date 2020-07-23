@@ -560,7 +560,6 @@ async function createInitialUsers() {
   }
 }
 
-
 async function rebuildDB() {
   try {
     client.connect();
@@ -579,9 +578,9 @@ async function testDB() {
     //await cartUpdate();
     const cart = await getCartbyUserId(1);
     await createInitialReviews();
-    await updateCart(1, 1, 1, "item", "price", "image")
+    // await updateCart(1, 1, 1, "item", "price", "image");
     // updateCart(userId, productId, quantity, itemname, price, image)
-    const updated = await updateCartForUser(3, 1);
+    // const updated = await updateCartForUser(3, 1);
     const userArman = await getUserByUsername("arman");
     const userJames = await getUserByUsername("james");
     const userRobin = await getUserByUsername("robin");
@@ -603,7 +602,7 @@ async function testDB() {
     // const updatedcart = await updateCart(3,1,5)
     // console.log(updatedcart)
     console.log("username", userArman, userJames, userRobin);
-    console.log("updatedCart", updated)
+    // console.log("updatedCart", updated);
     // console.log(cart);
   } catch (error) {
     console.error(error);
