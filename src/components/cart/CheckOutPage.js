@@ -33,22 +33,20 @@ function CheckOut() {
       .catch((error) => console.log(error));
   };
   return (
-    <>
-      <div className="paymentOption">
-        <StripeCheckout
-          stripeKey="pk_test_51H5G6FHKLvPBIQUE2egI5yc4CZJZJN0QePhORcZt8ZTM8KkeFG9Eyq5oyWtOAs3BANHfVnou1Ly0V8AtJhFp14Zr0023jEgmfg"
-          token={makePayment}
-          name="Grace Shopper"
-          amount={product.price * 100}
-          shippingAddress
-          billingAddress
-        >
-          <Button className="paymentButton" variant="contained">
-            Pay With Card
-          </Button>
-        </StripeCheckout>
-      </div>
-    </>
+    <div className="paymentOption">
+      <StripeCheckout
+        stripeKey="pk_test_51H5G6FHKLvPBIQUE2egI5yc4CZJZJN0QePhORcZt8ZTM8KkeFG9Eyq5oyWtOAs3BANHfVnou1Ly0V8AtJhFp14Zr0023jEgmfg"
+        token={makePayment}
+        name="Grace Shopper"
+        amount={product.price * 100}
+        shippingAddress
+        billingAddress
+      >
+        <Button className="paymentButton" variant="contained">
+          Pay With Card
+        </Button>
+      </StripeCheckout>
+    </div>
   );
 }
 
