@@ -22,8 +22,7 @@ function CartBody() {
   useEffect(() => {
     showMyCart().then(setUserCart);
   }, []);
-  console.log("usercart", userCart);
-  console.log("usercartprice", userCart[0]);
+
   const finalPriceArr = [];
   userCart.forEach((item) => {
     finalPriceArr.push(parseFloat(item.price));

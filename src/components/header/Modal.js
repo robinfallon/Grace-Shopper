@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { loginUser, registerUser } from "../../api/index";
 
-function helloWorld() {
-  console.log("hello, world");
-}
-
 function Modal({ setShowModal, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

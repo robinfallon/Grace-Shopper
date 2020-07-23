@@ -29,7 +29,6 @@ function SearchResults({ searchInput }) {
       <dl className="productMap">
         {myProducts
           .filter((product) => {
-            // console.log("line 31", product, searchInput);
             const trimmedSearchInput = searchInput.toLowerCase();
             if (
               trimmedSearchInput === "" ||

@@ -9,15 +9,6 @@ export async function addToCart(
   image
 ) {
   try {
-    // console.log(
-    //   "ATC is firing with",
-    //   userId,
-    //   productId,
-    //   quantity,
-    //   itemname,
-    //   price,
-    //   image
-    // );
     const { data } = await axios.post("/api/cart", {
       userId,
       productId,
@@ -71,16 +62,3 @@ export async function updateCartForUser(quantity, cartId) {
     throw error;
   }
 }
-
-// export async function removeFromCart(id) {
-//   try {
-//     const { data } = await axios.delete(`/api/cart/${id}`, {
-//       headers: {
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//     });
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
